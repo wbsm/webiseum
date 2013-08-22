@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  description: MyText
+  publish_at: 2013-08-13 23:31:25
+  finish_at: 2013-08-13 23:31:25
+  event_at: 2013-08-13 23:31:25
+  answers: MyText
+  correct_answer: MyString
+  image: 
+  has_many: MyString
+  : 
+  has_many: MyString
+  : 
+  through: MyString
+  : 
+
+two:
+  title: MyString
+  description: MyText
+  publish_at: 2013-08-13 23:31:25
+  finish_at: 2013-08-13 23:31:25
+  event_at: 2013-08-13 23:31:25
+  answers: MyText
+  correct_answer: MyString
+  image: 
+  has_many: MyString
+  : 
+  has_many: MyString
+  : 
+  through: MyString
+  : 

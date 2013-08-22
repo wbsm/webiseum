@@ -1,0 +1,17 @@
+<div class="pull-left">
+  <p id="notice"><%= notice %></p>
+</div>
+
+<div class="pull-right">
+  <%= button_to "Editar", { :action => "edit" }, :class => "btn btn-primary", :method => :get %>
+</div>
+<div class="clearfix"></div>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.full_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>

@@ -1,0 +1,7 @@
+rails generate model Tag name:string 
+
+rails generate model Forecast rating:integer comment:text
+
+rails generate model Question title description:text publish_at:datetime finish_at:datetime event_at:datetime answers:text correct_answer image:binary 
+
+rails generate model User full_name email password_digest 
