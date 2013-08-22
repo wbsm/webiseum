@@ -37,5 +37,11 @@
     <strong>Finalizada:</strong>
     <%= @question.finish_at.nil? ? "" : @question.finish_at.strftime("%d-%m-%Y %H:%M:%S") %>
   </p>
+  <p>
+    <strong>Tags:</strong>
+    <% @question.tags.each do |tag| %>
+      <%= label_tag(tag.name, tag.name) %>
+    <% end %>
+  </div>
 
 </div>
