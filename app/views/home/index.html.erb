@@ -1,254 +1,61 @@
 <div class="row">
-  <div class="col-md-8">
+    <div class="col-lg-8">
+      <!-- SEARCH -->
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Digite o nome da pergunta...">
+        <span class="input-group-btn">
+          <button class="btn btn-default" type="button">Buscar</button>
+        </span>
+      </div>
+      <!-- QUESTIONS -->
+      <div class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object img-rounded" src="https://sphotos-b-ord.xx.fbcdn.net/hphotos-prn2/p480x480/1069246_528998477155505_1315386317_n.png" alt="..." width="80">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading">FUTEBOL: Quem vai se classificar entre Atlético-MG e Botafogo?</h4>
+          <button type="button" class="btn btn-default">Atlético-MG <span class="badge">35</span></button>
+          <button type="button" class="btn btn-default">Botafogo <span class="badge">75</span></button>
+          <p class="text-muted">Você preveu Botafogo!</p>     
+        </div>
+      </div>      
+    </div>
 
-    <table>
-  <thead>
-    <tr>
-      <th>Rating</th>
-      <th>Comment</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-  <tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody><tbody>
-    <% @forecasts.each do |forecast| %>
-      <tr>
-        <td><%= forecast.rating %></td>
-        <td><%= forecast.comment %></td>
-        <td><%= link_to 'Show', forecast %></td>
-        <td><%= link_to 'Edit', edit_forecast_path(forecast) %></td>
-        <td><%= link_to 'Destroy', forecast, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-  </div>
-  <div class="col-md-4">4</div>
+    <div class="col-lg-4">
+      <!-- TAGS -->
+      <div class="jumbotron">
+        <div class="">
+          <h2>Tags</h2>
+          
+        </div>
+      </div>  
+      <!-- RANKING -->
+      <div>        
+        <div class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object img-rounded" src="https://sphotos-b-ord.xx.fbcdn.net/hphotos-prn2/p480x480/1069246_528998477155505_1315386317_n.png" alt="..." width="40">
+          </a>
+          <div class="media-body">
+            <h5>1. Gabriel M. Prado <span class="badge">75 pontos</span></h5>
+          </div>
+        </div>
+        <div class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object img-rounded" src="https://sphotos-b-ord.xx.fbcdn.net/hphotos-prn2/p480x480/1069246_528998477155505_1315386317_n.png" alt="..." width="40">
+          </a>
+          <div class="media-body">
+            <h5>2. Gabriel M. Prado <span class="badge">75 pontos</span></h5>
+          </div>
+        </div>
+        <div class="media">
+          <a class="pull-left" href="#">
+            <img class="media-object img-rounded" src="https://sphotos-b-ord.xx.fbcdn.net/hphotos-prn2/p480x480/1069246_528998477155505_1315386317_n.png" alt="..." width="40">
+          </a>
+          <div class="media-body">
+            <h5>3. Gabriel M. Prado <span class="badge">75 pontos</span></h5>
+          </div>
+        </div>
+      </div>
+    </div>
 </div>
-
 
