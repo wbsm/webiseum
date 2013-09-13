@@ -1,0 +1,9 @@
+/*
+ * CSS imports
+ * 
+ *= require application
+ *= require_self
+ */
+body {
+	padding-top: 60px;
+}
