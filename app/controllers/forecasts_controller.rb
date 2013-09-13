@@ -1,24 +1,25 @@
 class ForecastsController < ApplicationController
+  layout "landing"
   before_action :set_forecast, only: [:show, :edit, :update, :destroy]
 
-  # GET /forecasts
-  # GET /forecasts.json
+  def match 
+    respond_to do |format|
+      format.js { render :json => {:name => 'alo'} } 
+    end
+  end
+
   def index
     @forecasts = Forecast.all
     puts @forecasts
   end
 
-  # GET /forecasts/1
-  # GET /forecasts/1.json
   def show
   end
 
-  # GET /forecasts/new
   def new
     @forecast = Forecast.new
   end
 
-  # GET /forecasts/1/edit
   def edit
   end
 

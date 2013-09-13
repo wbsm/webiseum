@@ -1,17 +1,34 @@
 Webiseum::Application.routes.draw do
   
-  resources :home, only: [:index]
+  get   '/login', :to => 'sessions#new', :as => :login
+  get   '/logout', :to => 'sessions#destroy', :as => :logout
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get]
+  match '/auth/failure', :to => 'sessions#failure', via: [:get]
+  
+  namespace :admin do
+    resources :questions do 
+      collection do
+        get 'search'
+      end
+    end
+  end
 
-  resources :forecasts
-
-  resources :users, :questions, :tags do 
+  resources :users, :tags do 
     collection do
       get 'search'
     end
   end
 
+  resources :feed, only: [:index]
   resources :dashboard, only: [:index]
-  
+  resources :landing, only: [:index]
+
+  resources :forecasts do
+    collection do
+      get 'match'
+    end
+  end
+
   root 'landing#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

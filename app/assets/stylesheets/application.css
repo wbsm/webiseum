@@ -1,14 +1,21 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
+ * CSS imports
+ * http://stackoverflow.com/questions/7134034/using-rails-3-1-assets-pipeline-to-conditionally-use-certain-css
+ * 
  *= require twitter/bootstrap.css
+ *= require font-awesome/font-awesome.css
+ *= require_self
  */
-/* application.css */
-
-
+ .navbar-align-logo {
+	padding: 20px 30px;
+}
+.navbar-align-info ul {
+	margin-top: 18px;
+}
+.navbar-align-info button {
+	margin-top: 8px;
+}
+.connect-with-button {
+	margin-right: 10px;
+	width: 130px;
+}

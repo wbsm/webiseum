@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+	layout "admin"
+	skip_before_filter :verify_logged_user, :only => [:new]
 
 	def search
     	@users = User.where("full_name like ?", '%'+params[:search_field]+'%')
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
   	end
 
 	def new 
-		@user = User.new
+		render layout: "application"
 	end
 
 	def edit

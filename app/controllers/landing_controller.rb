@@ -1,6 +1,6 @@
 class LandingController < ApplicationController
-	layout "landing"
-
+	skip_before_filter :verify_logged_user, :only => [:index]
+	
 	def index
 		
 	end
