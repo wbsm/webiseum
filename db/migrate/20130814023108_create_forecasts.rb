@@ -5,7 +5,7 @@ class CreateForecasts < ActiveRecord::Migration
       t.integer :rating
       t.text :comment
 
-      t.belongs_to :user
+      t.belongs_to :logged_user
       t.belongs_to :question
 
       t.timestamps

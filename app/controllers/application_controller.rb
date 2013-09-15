@@ -7,12 +7,15 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def verify_logged_user  
-    
-    unless Session.is_valid_user(session["user_id"])
-      puts "################# [Webiseum] Usuario nao autorizado acessando URL: " + url_for(params)
-      redirect_to new_user_path
+    def verify_logged_user
+
+      unless Session.is_valid_user(session["user_id"])
+        puts "################# [Webiseum] Usuario nao autorizado acessando URL: " + url_for(params)
+        redirect_to new_admin_user_path
+      else
+        @logged_user = User.find(session['user_id'])
+      end
+
+
     end
-    
-  end
 end

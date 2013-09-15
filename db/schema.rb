@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130901180154) do
+ActiveRecord::Schema.define(version: 20130914221423) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20130901180154) do
     t.integer  "question_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "answer"
   end
 
   create_table "questions", force: true do |t|

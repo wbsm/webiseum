@@ -13,10 +13,10 @@ class SessionsController < ApplicationController
     # first loggin or not
     if session_user_id
       # add new the authorization provider [facebook, google+ or twitter] to the user
-      @user = User.find(session_user_id)
-      @user.add_provider(auth_hash)
+      logged_user = User.find(session_user_id)
+      logged_user.add_provider(auth_hash)
 
-      puts "################# [Webiseum] Usuario ja logado: " + @user.full_name.to_s
+      puts "################# [Webiseum] Usuario ja logado: " + logged_user.full_name.to_s
     else
       # log him in or sign him up
       # create the session
@@ -27,12 +27,12 @@ class SessionsController < ApplicationController
     end
     
     # redirect to index with auth info
-    redirect_to feed_index_path
+    redirect_to social_feed_index_path
   end
 
   def destroy
     session[:user_id] = nil
-    redirect_to landing_index_path
+    redirect_to root_path
   end
 
   def failure

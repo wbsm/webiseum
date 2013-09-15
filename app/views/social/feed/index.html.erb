@@ -1,0 +1,65 @@
+
+    <header style="height: 70px;">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Pesquisar perguntas...">
+      <span class="input-group-addon"><i class="icon-search"></i></span>
+    </div>
+    </header>
+
+    <% @questions.each do |question| %>
+
+      <article>
+        <div class="row">
+          <div class="col-xs-2">
+            <a href="#">
+              <img class="media-object" src="https://app.divshot.com/img/placeholder-64x64.gif">
+            </a>
+          </div>
+          <div class="col-xs-7">
+            <label style="margin-left: 5px;"><%= question.title %></label>
+            <div id="match_forecast_<%= question.id %>">
+              <%= form_for Forecast.new, url: match_social_forecasts_path(@forecast), remote: true do |f| %>
+
+                  <%= hidden_field_tag(:question_id, question.id) %>
+                  <div>
+                    <% question.answers.split(";").each do |answer| %>
+                        <%= radio_button_tag('answer'+question.id.to_s, answer) %> <%= answer %>
+                    <% end %>
+                  </div>
+
+                  <%= text_area_tag('comment'+question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
+
+                  <div class="pull-left">
+                    <small class="">Confiança da previsão: </small>
+                    <%= radio_button_tag('rating'+question.id.to_s, 1) %>
+                    <%= radio_button_tag('rating'+question.id.to_s, 2) %>
+                    <%= radio_button_tag('rating'+question.id.to_s, 3) %>
+                    <%= radio_button_tag('rating'+question.id.to_s, 4) %>
+                    <%= radio_button_tag('rating'+question.id.to_s, 5) %>
+                  </div>
+
+                  <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
+                <% end %>
+            </div>
+
+            <div id="rematch_forecast_<%= question.id %>" style="margin-top: 15px; display: none;">
+              <i class="icon-quote-left pull-left icon-muted"></i><span id="match_response_<%= question.id %>"></span>
+              <a data-remote="true" href="<%= rematch_social_forecasts_path(:user_id => session[:user_id], :question_id => question.id) %>"class="btn btn-link btn-sm pull-right" style="margin-top: -5px;"> Editar previsão <i class="icon-edit icon-large"></i></a>
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div>
+              <% question.tags.each do |tag| %>
+                  <span class="label label-primary"><%= tag.name %></span>
+              <% end %>
+            </div>
+            <small class="text-muted">Quem tamb&eacute;m previu:</small>
+            <div>
+              <img src="https://app.divshot.com/img/placeholder-64x64.gif" style="display: inline-block; margin-bottom: 4px;" width="36">
+              <img src="https://app.divshot.com/img/placeholder-64x64.gif" style="display: inline-block; margin-bottom: 4px;" width="36">
+            </div>
+          </div>
+        </div>
+        <hr>
+      </article>
+    <% end %>

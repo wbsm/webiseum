@@ -1,0 +1,3 @@
+$('div#match_forecast_<%=params["question_id"]%>').css('display', 'none');
+$('div#rematch_forecast_<%=params["question_id"]%>').css('display', 'block');
+$('span#match_response_<%=params["question_id"]%>').html("Você previu " + '<%= flash[:answer] %>');

@@ -1,0 +1,37 @@
+<%= form_for @logged_user, url: admin_user_path(@logged_user), html: {class: "nifty_form"} do |f| %>
+
+	<fieldset>
+		<legend><%= form_title %></legend>
+		<% if @logged_user.errors.any? %>
+			<div id="error_explanation">
+			    <h4>
+			    	O formulário possui os seguintes erros:
+			    </h4>
+			    <ul>
+					<% @logged_user.errors.full_messages.each do |message|%>
+						<li><%= message %> </li> <% end %>
+				</ul>
+			</div>
+		<% end %>
+
+		<div class="form-group ">
+			<%= f.label :full_name %> <br />
+			<%= f.text_field :full_name, :class => 'form-control'%>
+		</div>
+		<div class="form-group ">
+			<%= f.label :email %> <br />
+			<%= f.text_field :email, :class => 'form-control'%>
+		</div>
+		<div class="form-group ">
+			<%= f.label :password %> <br />
+			<%= f.password_field :password, :class => 'form-control'%>
+		</div>
+		<div class="form-group ">
+			<%= f.label :password_confirmation %> <br />
+			<%= f.password_field :password_confirmation, :class => 'form-control'%>
+		</div>
+		<div class="actions">
+	      <%= f.submit :value => 'Salvar', :class => 'btn btn-primary' %>
+	    </div>
+	</fieldset>
+<% end %>

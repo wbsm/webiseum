@@ -1,0 +1,96 @@
+<nav class="navbar navbar-static-top navbar-default" style="margin-bottom: 0px;" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-mobile">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand navbar-align-logo" href="#"><img src="http://webiseum.azurewebsites.net/content/images/logo.png" width="49"></a>
+    </div>
+    <div class="collapse navbar-collapse navbar-align-info navbar-collapse-mobile">
+      <ul class="nav navbar-nav pull-right">
+        <li>
+          <a href="#howto">Como prever?</a>
+        </li>
+        <li>
+          <a href="#about">Sobre</a>
+        </li>
+        <li>
+          <%= form_tag("/login", method: "get") do %>
+          	<button type="submit" class="btn pull-right btn-default btn-sm">Login</button>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container text-center">
+    <h2>Fa&ccedil;a previs&otilde;es e ganhe pr&ecirc;mios</h2>
+    <p>Interaja com amigos e saiba quem tem melhor desempenho</p><br>
+    <p>Conecte com sua rede social preferida</p>
+    <p>
+      <a href="/auth/facebook" class="btn btn-primary btn-lg" style="background-color: #3b5998; border: 0px;"><i class="icon-facebook icon-large"> Facebook</i></a>
+      <a class="btn btn-primary btn-lg" style="background-color: #cb2027; border: 0px;"><i class="icon-google-plus icon-large"> Google+</i></a>
+      <a class="btn btn-primary btn-lg" style="background-color: #00aced; border: 0px;"><i class="icon-twitter icon-large"> Twitter</i></a>
+    </p>
+    <h5>Ou conecte com seu <a href="<%= new_user_landing_page_index_path %>">e-mail pessoal</a></h5>
+  </div>
+</div>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-lg-4 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+      <h3>Social</h3>
+      <p class="text-center">Faça e compartilhe suas previsões. Confira os palpites de seus amigos!</p>
+      <p></p>
+    </div>
+    <div class="col-lg-4 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+      <h3>Diversos assuntos</h3>
+      <p class="text-center">Futebol, Televisão, Política... Jogue sobre seus temas favoritos.</p>
+      <p></p>
+    </div>
+    <div class="col-lg-4 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+      <h3>Ranking e prêmios</h3>
+      <p class="text-center">Você ganha pontos se acertar previsões, sobe nos rankings e pode ganhar prêmios!</p>
+      <p></p>
+    </div>
+  </div>
+  <hr>
+  <div id="howto" class="row">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+    </div>
+  </div>
+  <hr>
+  <div class="row featurette">
+    <div class="col-md-5 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+    </div>
+    <div class="col-md-7">
+      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="col-md-7">
+      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+    </div>
+    <div class="col-md-5 text-center">
+      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
+    </div>
+  </div>
+  <hr>
+  <footer>
+    <p>&copy; Company 2013</p>
+  </footer>
+</div>

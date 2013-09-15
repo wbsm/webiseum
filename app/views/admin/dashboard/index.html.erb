@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col-lg-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Dashboard</h3>
+        </div>
+        <table class="table">
+            <tr>
+              <td><%= link_to 'Questões cadastradas', admin_questions_path %></td>
+              <td><%= @number_of_questions %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Usuários cadastrados', admin_users_path %></td>
+              <td><%= @number_of_users %></td>
+            </tr>
+            <tr>
+              <td><%= link_to 'Tags cadastradas', admin_tags_path %></td>
+              <td><%= @number_of_tags %></td>
+            </tr>
+          </table> 
+      </div>
+    </p>
+    </div>
+    <div class="col-lg-6">
+      
+    </div>
+</div>
