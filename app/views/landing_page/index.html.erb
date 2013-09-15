@@ -15,8 +15,8 @@
           <a href="#about">Sobre</a>
         </li>
         <li>
-          <%= form_tag("/login", method: "get") do %>
-          	<button type="submit" class="btn pull-right btn-default btn-sm">Login</button>
+          <%= form_tag(new_user_landing_page_index_path, method: "get") do %>
+          	<button type="submit" class="btn pull-right btn-default btn-sm">Cadastre-se</button>
           <% end %>
         </li>
       </ul>
@@ -31,8 +31,8 @@
     <p>Conecte com sua rede social preferida</p>
     <p>
       <a href="/auth/facebook" class="btn btn-primary btn-lg" style="background-color: #3b5998; border: 0px;"><i class="icon-facebook icon-large"> Facebook</i></a>
-      <a class="btn btn-primary btn-lg" style="background-color: #cb2027; border: 0px;"><i class="icon-google-plus icon-large"> Google+</i></a>
-      <a class="btn btn-primary btn-lg" style="background-color: #00aced; border: 0px;"><i class="icon-twitter icon-large"> Twitter</i></a>
+      <a class="btn btn-primary btn-lg disabled" style="background-color: #cb2027; border: 0px;"><i class="icon-google-plus icon-large"> Google+</i></a>
+      <a class="btn btn-primary btn-lg disabled" style="background-color: #00aced; border: 0px;"><i class="icon-twitter icon-large"> Twitter</i></a>
     </p>
     <h5>Ou conecte com seu <a href="<%= new_user_landing_page_index_path %>">e-mail pessoal</a></h5>
   </div>
@@ -57,36 +57,6 @@
       <h3>Ranking e prêmios</h3>
       <p class="text-center">Você ganha pontos se acertar previsões, sobe nos rankings e pode ganhar prêmios!</p>
       <p></p>
-    </div>
-  </div>
-  <hr>
-  <div id="howto" class="row">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-    <div class="col-md-5 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
-    </div>
-  </div>
-  <hr>
-  <div class="row featurette">
-    <div class="col-md-5 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
-    </div>
-    <div class="col-md-7">
-      <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-md-7">
-      <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-      <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-    </div>
-    <div class="col-md-5 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
     </div>
   </div>
   <hr>
