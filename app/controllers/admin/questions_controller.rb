@@ -31,7 +31,7 @@ class Admin::QuestionsController < Admin::AdminController
   def create
     @question = Question.new(question_params)
     
-    unless params[:tags].nil? 
+    unless params[:tags].nil?
       @question.tags = Tag.find(params[:tags])
     end
     
@@ -50,7 +50,12 @@ class Admin::QuestionsController < Admin::AdminController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    @question.tags = Tag.find(params[:tags])
+    if params[:tags].nil?
+      @question.tags = []
+    else
+      @question.tags = Tag.find(params[:tags])
+    end
+
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to admin_question_path(@question), notice: 'Question was successfully updated.' }

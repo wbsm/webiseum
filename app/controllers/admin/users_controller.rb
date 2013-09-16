@@ -11,43 +11,43 @@ class Admin::UsersController < ApplicationController
   end
 
 	def edit
-		@logged_user = User.find(params[:id])
+		@user = User.find(params[:id])
 	end
 
 	def create 
-		@logged_user = User.new(user_params)
+		@user = User.new(user_params)
 		
-		if @logged_user.save
-			redirect_to @logged_user, notice: 'Cadastro criado com sucesso!'
+		if @user.save
+			redirect_to admin_user_path, notice: 'Cadastro criado com sucesso!'
 		else 
 			render action: :new
 		end
 	end
 
 	def update
-		@logged_user = User.find(params[:id])
+		@user = User.find(params[:id])
 		
-		if @logged_user.update(user_params)
-			redirect_to @logged_user, notice: 'Cadastro criado com sucesso!'
+		if @user.update(user_params)
+			redirect_to admin_user_path, notice: 'Cadastro atualizado com sucesso!'
 		else 
 			render action: :edit
 		end
 	end
 
 	def show 
-		@logged_user = User.find(params[:id])
+		@user = User.find(params[:id])
 	end
 
 	private
 
     def user_params
       params
-        .require(:logged_user)
+        .require(:user)
         .permit(
           :full_name,
-          :email,
-          :password,
-          :password_confirmation
+          :email
+          #:password,
+          #:password_confirmation
         )
     end
 end

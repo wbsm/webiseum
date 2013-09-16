@@ -2,7 +2,7 @@ class Admin::DashboardController < ApplicationController
 	layout "admin"
 
 	def index
-		@logged_user = User.find(session["user_id"])
+		@user = User.find(session["user_id"])
 		@number_of_questions = Question.count
 		@number_of_forecasts = Forecast.count
 		@number_of_users = User.count

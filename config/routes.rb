@@ -41,6 +41,12 @@ Webiseum::Application.routes.draw do
         get 'search'
       end
     end
+
+    resources :ranking_generator do
+      collection do
+        get 'generate'
+      end
+    end
   end
 
 end

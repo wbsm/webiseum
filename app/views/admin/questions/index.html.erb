@@ -23,6 +23,7 @@
     <tr>
       <th>Nome</th>
       <th>Descrição</th>
+      <th>Resposta correta</th>
       <th>Publicação</th>
       <th>Finalização</th>
       <th></th>
@@ -36,6 +37,7 @@
       <tr>
         <td><%= question.title %></td>
         <td><%= question.description %></td>
+        <td><%= question.correct_answer %></td>
         <td><%= question.publish_at.nil? ? "" : question.publish_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
         <td><%= question.finish_at.nil? ? "" : question.finish_at.strftime("%d-%m-%Y %H:%M:%S") %></td>
         <td><%= link_to 'Exibir', admin_question_path(question) %></td>
