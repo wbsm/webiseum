@@ -95,7 +95,9 @@
 
         <div class="col-md-2">
           <aside class="aside-menu">
-
+            <% @tags.try(:each) {|tag| %>
+                <p></p><a href="<%= filter_by_tags_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
+            <% } %>
           </aside>
         </div>
       </div>

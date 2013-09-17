@@ -1,5 +1,5 @@
-
-<% @forecasts.each do |f| %>
+phonelist.try(:each){|i| puts i
+<% @forecasts.try(:each) {|f| %>
 
     <article>
       <div class="row">
@@ -18,4 +18,4 @@
       </div>
       <hr>
     </article>
-<% end %>
+<% } %>

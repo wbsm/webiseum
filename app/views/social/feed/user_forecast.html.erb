@@ -2,7 +2,7 @@
 <h1><small>Minhas previsões</small></h1>
 <hr>
 
-<% @forecasts.each do |f| %>
+<% @forecasts.try(:each) {|f| %>
 
     <article>
       <div class="row">
@@ -20,4 +20,4 @@
       </div>
       <hr>
     </article>
-<% end %>
+<% } %>
