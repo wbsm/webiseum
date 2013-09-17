@@ -4,6 +4,7 @@ class Social::SocialController < Infra::WebiseumMainController
   private
     def populate_common_models
       @rank = User.order('rank_score desc').limit(10)
+      @tags = Tag.all
     end
 
 end

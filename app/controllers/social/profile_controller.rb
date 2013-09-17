@@ -2,7 +2,7 @@ class Social::ProfileController < Social::SocialController
   layout "social"
 
   def show
-
+    puts 'aloasdfasd'
   end
 
   def edit

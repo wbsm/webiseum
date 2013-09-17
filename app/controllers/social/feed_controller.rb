@@ -16,7 +16,6 @@ class Social::FeedController < Social::SocialController
 
   def filter_by_tags
     @questions = Question.where(:tag => params[:tag_name])
-    @tags = Tag.all
 
     render "index"
   end
