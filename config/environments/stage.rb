@@ -1,10 +1,10 @@
 Webiseum::Application.configure do
 
   # Facebook auth params
-  # App name: wbsm-production-env
-  # Namespace: wbsm-production
-  ENV['FACEBOOK_KEY']     = '186877114827653'
-  ENV['FACEBOOK_SECRET']  = '4bc1cc7f983067449ae15d18788d0a82'
+  # App name: Webiseum Stage Env
+  # Namespace: webiseum-stage
+  ENV['FACEBOOK_KEY']     = '1375648122671695'
+  ENV['FACEBOOK_SECRET']  = '6ce81bc54045df0530330400f7c48bf5'
 
   # Settings specified here will take precedence over those in config/application.rb.
 

@@ -20,7 +20,9 @@ class Admin::RankingGeneratorController < Admin::AdminController
       q.save
     end
 
-    redirect_to admin_dashboard_index_path, notice: 'Ranking atualizado com sucesso...'
+    respond_to do |format|
+      format.js
+    end
   end
 
 end

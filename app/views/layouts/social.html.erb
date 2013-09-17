@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
   <title>Webiseum</title>
   <%= stylesheet_link_tag    "social", media: "all", "data-turbolinks-track" => true %>
@@ -94,8 +94,10 @@
         </div>
 
         <div class="col-md-2">
-          <aside>
-            <section></section>
+          <aside class="aside-menu">
+            <% @tags.each do |tag| %>
+                <p></p><a href="<%= filter_by_tags_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
+            <% end %>
           </aside>
         </div>
       </div>

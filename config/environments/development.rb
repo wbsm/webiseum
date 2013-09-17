@@ -1,8 +1,8 @@
 Webiseum::Application.configure do
 
   # Facebook auth params
-  # App name: Webiseum Dev Env
-  # Namespace: webiseum-development
+  # App name: wbsm-development-env
+  # Namespace: wbsm-development
   ENV['FACEBOOK_KEY']     = '164133423784670'
   ENV['FACEBOOK_SECRET']  = 'e9bbee6d33f527d469d3125e5b7c60a4'
 

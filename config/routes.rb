@@ -12,7 +12,7 @@ Webiseum::Application.routes.draw do
   # Landing page
   resources :landing_page, only: [:index] do
     collection do
-      get 'new_user'
+      get :new_user
     end
   end
 
@@ -20,14 +20,17 @@ Webiseum::Application.routes.draw do
   namespace :social do
     resources :feed, only: [:index] do
       collection do
-        get 'all_forecasts', 'user_forecast'
+        get :all_forecasts, :user_forecast
+      end
+      member do
+        get :filter_by_tags
       end
     end
 
     resources :forecasts do
       collection do
-        post 'match'
-        get 'rematch'
+        post :match
+        get :rematch
       end
     end
 
