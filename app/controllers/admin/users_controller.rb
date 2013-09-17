@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::AdminController
 	layout "admin"
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
 	def search
     	@users = User.where("full_name like ?", '%'+params[:search_field]+'%')
@@ -11,7 +12,7 @@ class Admin::UsersController < Admin::AdminController
   end
 
 	def edit
-		@user = User.find(params[:id])
+
 	end
 
 	def create 
@@ -25,8 +26,6 @@ class Admin::UsersController < Admin::AdminController
 	end
 
 	def update
-		@user = User.find(params[:id])
-		
 		if @user.update(user_params)
 			redirect_to admin_user_path, notice: 'Cadastro atualizado com sucesso!'
 		else 
@@ -35,10 +34,22 @@ class Admin::UsersController < Admin::AdminController
 	end
 
 	def show 
-		@user = User.find(params[:id])
+
 	end
 
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html { redirect_to admin_users_path }
+      format.json { head :no_content }
+    end
+  end
+
 	private
+
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params
