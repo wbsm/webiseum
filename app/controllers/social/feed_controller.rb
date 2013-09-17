@@ -15,7 +15,7 @@ class Social::FeedController < Social::SocialController
   end
 
   def filter_by_tags
-    @questions = Question.where(:tag => params[:tag_name])
+    @questions = Question.joins(:tags).where('tags.name' => params[:id])
 
     render "index"
   end

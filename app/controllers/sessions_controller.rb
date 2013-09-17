@@ -13,10 +13,19 @@ class SessionsController < ApplicationController
     # first loggin or not
     if session_user_id
       # add new the authorization provider [facebook, google+ or twitter] to the user
-      logged_user = User.find(session_user_id)
-      logged_user.add_provider(auth_hash)
+      logged_user = User.where(:id => session_user_id)
+      # TODO melhorar: copiou e colou
+      if logged_user.exists?
+        auth = Authentication.find_or_create(auth_hash)
 
-      puts "################# [Webiseum] Usuario ja logado: " + logged_user.full_name.to_s
+        session[:user_id] = auth.user.id
+        puts "################# [Webiseum] Usuario acabou de logar: " + auth.user.full_name
+
+      else
+        logged_user.add_provider(auth_hash)
+
+        puts "################# [Webiseum] Usuario ja logado: " + logged_user.full_name.to_s
+      end
     else
       # log him in or sign him up
       # create the session
