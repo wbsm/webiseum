@@ -1,4 +1,4 @@
-class Social::SocialController < Infra::WebiseumMainController
+class Social::SocialController < ApplicationController
   before_action :populate_common_models
 
   private

@@ -1,18 +1,18 @@
 Webiseum::Application.routes.draw do
 
   # Landing Page paths
-  root 'landing_page#index'
+  root 'webiseum#index'
 
   # Auth paths
-  get   '/login', :to => 'sessions#new', :as => :login
+  get   '/signup', :to => 'sessions#new', :as => :signup
   get   '/logout', :to => 'sessions#destroy', :as => :logout
-  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get]
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
   match '/auth/failure', :to => 'sessions#failure', via: [:get]
 
   # Landing page
-  resources :landing_page, only: [:index] do
+  resources :webiseum, only: [:index] do
     collection do
-      get :new_user
+      get :unregistered
     end
   end
 

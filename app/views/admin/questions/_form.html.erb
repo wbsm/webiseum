@@ -47,7 +47,7 @@
     </div>
 
     <div class="form-group">
-      <%= label_tag(:tag, "Tags") %>
+      <%= f.label "Tags:" %><br>
       </br>
       <% @tags.each do |tag| %>
         <%= check_box_tag("tags[]", tag.id, @question.tags.include?(tag)) %>

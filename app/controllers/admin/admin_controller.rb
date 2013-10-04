@@ -1,4 +1,4 @@
-class Admin::AdminController < Infra::WebiseumMainController
+class Admin::AdminController < ApplicationController
 	layout "admin"
 
   before_action :verify_admin_user

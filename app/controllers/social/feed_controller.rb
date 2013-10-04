@@ -2,7 +2,7 @@ class Social::FeedController < Social::SocialController
 	layout "social"
 
   def index
-		@questions = Question.find_not_expired
+  		@questions = Question.find_not_expired
 		@tags = Tag.all
   end
 

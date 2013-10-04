@@ -1,42 +1,52 @@
 class SessionsController < ApplicationController
-  skip_before_filter :verify_logged_user 
+  skip_before_filter :verify_logged_user
 
   def new
-    # redirect to index with auth info
-    redirect_to root_path
+    @new_user = env['omniauth.identity'] || User.new
+    render "webiseum/signup"
   end
 
   def create
     auth_hash = request.env['omniauth.auth']
     session_user_id = session[:user_id]
-    
-    # first loggin or not
-    if session_user_id
-      # add new the authorization provider [facebook, google+ or twitter] to the user
-      logged_user = User.where(:id => session_user_id)
-      # TODO melhorar: copiou e colou
-      if logged_user.exists?
-        auth = Authentication.find_or_create(auth_hash)
 
-        session[:user_id] = auth.user.id
-        puts "################# [Webiseum] Usuario acabou de logar: " + auth.user.full_name
-
-      else
-        logged_user.add_provider(auth_hash)
-
-        puts "################# [Webiseum] Usuario ja logado: " + logged_user.full_name.to_s
-      end
+    if session_user_id.nil?
+      auth = Authentication.find_or_create(nil, auth_hash)
     else
-      # log him in or sign him up
-      # create the session
-       auth = Authentication.find_or_create(auth_hash)
+      user = User.find_by_id(session_user_id)
+      # se possui session_id mas nao esta registrado no BD
+      redirect_to unregistered_webiseum_index_path && return if user.nil?
 
-       session[:user_id] = auth.user.id
-       puts "################# [Webiseum] Usuario acabou de logar: " + auth.user.full_name
+      auth = Authentication.find_or_create(user, auth_hash)
     end
-    
+
+    session[:user_id] = auth.user.id
+    redirect_to social_feed_index_path
+=begin
+  # first login
+    unless session_user_id
+     auth = Authentication.find_or_create(auth_hash)
+
+      session[:user_id] = auth.user.id
+      puts "################# [Webiseum] Usuario acabou de logar: " + auth.user.email.to_s
+    else
+      logged_user = User.find_by_id(session_user_id)
+
+      if !logged_user.nil?
+        logged_user.build_provider(auth_hash)
+
+        puts "################# [Webiseum] Usuario acabou de logar: " + logged_user.to_s
+      else
+        puts "################# [Webiseum] Usuario nao autorizado..."
+        # redirect to index with auth info
+        redirect_to unregistered_webiseum_index_path && return
+      end
+
+    end
+
     # redirect to index with auth info
     redirect_to social_feed_index_path
+=end
   end
 
   def destroy
@@ -46,6 +56,8 @@ class SessionsController < ApplicationController
 
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
+    session[:user_id] = nil
+    redirect_to unregistered_webiseum_index_path
   end
 
 end

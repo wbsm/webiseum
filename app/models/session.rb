@@ -1,7 +1,7 @@
 class Session
 
-	def self.is_valid_user(user_id)
-		User.where(:id => user_id).count > 0 ? true : false
-	end
+  def self.is_logged_user(logged_user)
+    find_user(logged_user.id) if !logged_user.nil?
+  end
 
 end

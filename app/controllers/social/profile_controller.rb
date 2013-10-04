@@ -2,7 +2,7 @@ class Social::ProfileController < Social::SocialController
   layout "social"
 
   def show
-    puts 'aloasdfasd'
+
   end
 
   def edit
@@ -10,9 +10,8 @@ class Social::ProfileController < Social::SocialController
   end
 
   def update
-    @logged_user = User.find(params[:id])
-
     if @logged_user.update(logged_user_params)
+      Authentication.create_webiseum_auth(@logged_user) if password_updated
       redirect_to social_profile_path(@logged_user), notice: 'Perfil atualizado com sucesso!'
     else
       render action: :edit
@@ -20,12 +19,21 @@ class Social::ProfileController < Social::SocialController
   end
 
   private
+    def password_updated
+      !logged_user_params['password'].empty?
+    end
+
     def logged_user_params
       params
       .require(:user)
       .permit(
-          :full_name,
-          :email
+          :first_name,
+          :last_name,
+          :email,
+          #:birthdate,
+          #:gender,
+          :password,
+          :password_confirmation
       )
     end
 end

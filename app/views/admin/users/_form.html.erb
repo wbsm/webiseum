@@ -15,14 +15,30 @@
 		<% end %>
 
 		<div class="form-group ">
-			<%= f.label :full_name %> <br />
-			<%= f.text_field :full_name, :class => 'form-control'%>
+			<%= f.label :name %> <br />
+			<%= f.text_field :name, :class => 'form-control'%>
 		</div>
+      <div class="form-group ">
+        <%= f.label :first_name %> <br />
+        <%= f.text_field :first_name, :class => 'form-control'%>
+      </div>
+      <div class="form-group ">
+        <%= f.label :last_name %> <br />
+        <%= f.text_field :last_name, :class => 'form-control'%>
+      </div>
 		<div class="form-group ">
 			<%= f.label :email %> <br />
 			<%= f.text_field :email, :class => 'form-control'%>
 		</div>
-		<div class="form-group ">
+      <div class="form-group ">
+        <%= f.label :birthdate %> <br />
+        <%= f.text_field :birthdate, :class => 'form-control'%>
+      </div>
+      <div class="form-group ">
+        <%= f.label :gender%> <br />
+        <%= f.text_field :gender, :class => 'form-control'%>
+      </div>
+      <div class="form-group ">
 			<%= f.label :password %> <br />
 			<%= f.password_field :password, :class => 'form-control'%>
 		</div>

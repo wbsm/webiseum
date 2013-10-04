@@ -9,13 +9,11 @@ class ApplicationController < ActionController::Base
 
     def verify_logged_user
 
-      unless Session.is_valid_user(session["user_id"])
+      @logged_user = User.find_by_id(session[:user_id])
+      if @logged_user.nil?
         puts "################# [Webiseum] Usuario nao autorizado acessando URL: " + url_for(params)
-        redirect_to new_user_landing_page_index_path
-      else
-        @logged_user = User.find(session['user_id'])
+        redirect_to unregistered_webiseum_index_path
       end
-
 
     end
 end

@@ -38,6 +38,7 @@ class Admin::UsersController < Admin::AdminController
 	end
 
   def destroy
+    Authentication.destroy(@user.id)
     @user.destroy
     respond_to do |format|
       format.html { redirect_to admin_users_path }

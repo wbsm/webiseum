@@ -9,11 +9,27 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @logged_user.full_name %>
+  <%= @logged_user.name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @logged_user.first_name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @logged_user.last_name %>
 </p>
 <p>
   <strong>Email:</strong>
   <%= @logged_user.email %>
+</p>
+<p>
+  <strong>Data de nascimento:</strong>
+  <%= @logged_user.birthdate %>
+</p>
+<p>
+  <strong>Sexo:</strong>
+  <%= @logged_user.gender %>
 </p>
 <p>
   <strong>Rank score:</strong>
