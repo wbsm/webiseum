@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     else
       user = User.find_by_id(session_user_id)
       # se possui session_id mas nao esta registrado no BD
-      redirect_to signup_path && return if user.nil?
+      redirect_to unregistered_webiseum_index_path && return if user.nil?
 
       auth = Authentication.find_or_create(user, auth_hash)
     end
@@ -57,7 +57,7 @@ class SessionsController < ApplicationController
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
     session[:user_id] = nil
-    redirect_to signup_path
+    redirect_to unregistered_webiseum_index_path
   end
 
 end
