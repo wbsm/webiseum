@@ -6,6 +6,15 @@ Webiseum::Application.configure do
   ENV['FACEBOOK_KEY']     = '164133423784670'
   ENV['FACEBOOK_SECRET']  = 'e9bbee6d33f527d469d3125e5b7c60a4'
 
+  # Twitter auth params
+  # App name: wbsm-development-env
+  # Description: wbsm-development
+  ENV['CONSUMER_KEY']     = 'dwOcfIQZFEBcRR2PJrA'
+  ENV['CONSUMER_SECRET']  = 'fkPX3kchlKazHZpDPRXhwNBxIkoPWVHCGggPQlnjAWw'
+
+  # Paperclip - avatar manager
+  Paperclip.options[:command_path] = "/usr/local/bin/"
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # In the development environment your application's code is reloaded on

@@ -8,6 +8,8 @@
 <div class="clearfix"></div>
 
 <div>
+  <%= image_tag @question.image_type(:thumb), size: '64' %>
+  </br>
   <p>
     <strong>Nome:</strong>
     <%= @question.title %>

@@ -32,6 +32,7 @@ class Social::ProfileController < Social::SocialController
           :email,
           #:birthdate,
           #:gender,
+          :avatar,
           :password,
           :password_confirmation
       )

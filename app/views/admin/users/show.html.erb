@@ -7,6 +7,8 @@
 </div>
 <div class="clearfix"></div>
 
+<%= image_tag @logged_user.image_type(:thumb), class: 'media-object', size: '46' %>
+</br>
 <p>
   <strong>Name:</strong>
   <%= @logged_user.name %>

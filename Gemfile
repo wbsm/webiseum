@@ -51,6 +51,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+# social login
 gem 'omniauth'
-gem 'omniauth-facebook'
 gem 'omniauth-identity'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+
+# Paperclip - avatar manager
+gem "paperclip", "~> 3.0"

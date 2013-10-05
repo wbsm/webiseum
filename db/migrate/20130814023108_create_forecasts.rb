@@ -19,7 +19,7 @@ class CreateForecasts < ActiveRecord::Migration
       t.datetime :event_at
       t.text :answers
       t.string :correct_answer
-      t.binary :image
+      t.binary :image_type
 
       t.timestamps
   end

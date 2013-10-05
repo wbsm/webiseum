@@ -8,7 +8,9 @@
       <div class="row">
         <div class="col-xs-10">
           <blockquote>
-            <p><img class="media-object" style="width: 32px; display: inline;" src="https://app.divshot.com/img/placeholder-64x64.gif"><strong> <%= f.user.name %></strong> previu <em><%= f.answer %></em> para</p>
+            <p>
+              <%= image_tag f.user.image_type(:thumb), size: '46' %>
+              <strong> <%= f.user.name %></strong> previu <em><%= f.answer %></em> para</p>
             <small><%= f.question.title %></small>
           </blockquote>
         </div>

@@ -17,7 +17,8 @@ class Authentication < ActiveRecord::Base
 	def self.find_or_create(user, auth_hash)
     user = User.includes(:authentications).find_by_email(auth_hash['info']['email']) if !user.present?
     if !user.present?
-      user = User.create(build_info_params(auth_hash['info']))
+      user = AuthenticationsHelper.build_user(auth_hash)
+      user.save
     end
 
     create_social_auth(user, auth_hash)
@@ -28,7 +29,7 @@ class Authentication < ActiveRecord::Base
   end
 
   def self.create_webiseum_auth(user)
-    auth_hash = build_webiseum_auth(user)
+    auth_hash = AuthenticationsHelper.build_webiseum_auth(user)
     create_auth(user, auth_hash)
   end
 
@@ -40,21 +41,6 @@ class Authentication < ActiveRecord::Base
       end
 
       Authentication.create(:user => user, :provider => provider_name, :uid => provider_uid)
-    end
-
-    def self.build_webiseum_auth(user)
-      auth_hash = Hash.new
-      auth_hash['provider'], auth_hash['uid'] = 'identity', -11
-      auth_hash['info'] = user.attributes
-      auth_hash
-    end
-
-    # refactor passar dependencia decontroller para fora
-    def self.build_info_params(auth_hash)
-      params = ActionController::Parameters.new(auth_hash).permit(:name, :email, :first_name, :last_name, :image, :password, :password_confirmation)
-      params['password'] = '111111111111111' # nome@timestamp
-      params['password_confirmation'] = '111111111111111'
-      params
     end
 
   # associations

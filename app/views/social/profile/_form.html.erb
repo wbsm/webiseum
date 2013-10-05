@@ -1,4 +1,4 @@
-<%= form_for @logged_user, url: social_profile_path(@logged_user), html: {class: "nifty_form"} do |f| %>
+<%= form_for @logged_user, url: social_profile_path(@logged_user), html: {:multipart => true, class: "nifty_form"} do |f| %>
 
 	<fieldset>
 		<legend><%= form_title %></legend>
@@ -14,7 +14,13 @@
 			</div>
 		<% end %>
 
-		<div class="form-group ">
+
+        </br>
+      <div class="form-group ">
+        <%= image_tag f.object.image_type(:thumb), class: 'media-object', size: '46' %>
+        <%= f.file_field :avatar %>
+      </div>
+      	<div class="form-group ">
 			<%= f.label 'Nome' %> <br />
 			<%= f.text_field :first_name, :class => 'form-control'%>
 		</div>
@@ -34,8 +40,8 @@
         <%= f.label :password_confirmation %> <br />
         <%= f.password_field :password_confirmation, :class => 'form-control'%>
       </div>
-		<div class="actions">
+      <div class="actions">
 	      <%= f.submit :value => 'Salvar', :class => 'btn btn-primary' %>
-	    </div>
+	  </div>
 	</fieldset>
 <% end %>
