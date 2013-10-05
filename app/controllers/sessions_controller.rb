@@ -57,7 +57,7 @@ class SessionsController < ApplicationController
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
     session[:user_id] = nil
-    redirect_to unregistered_webiseum_index_path
+    redirect_to signup_path
   end
 
 end
