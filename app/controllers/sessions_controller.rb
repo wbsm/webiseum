@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     else
       user = User.find_by_id(session_user_id)
       # se possui session_id mas nao esta registrado no BD
-      redirect_to unregistered_webiseum_index_path && return if user.nil?
+      redirect_to signup_path && return if user.nil?
 
       auth = Authentication.find_or_create(user, auth_hash)
     end
