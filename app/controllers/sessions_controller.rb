@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     session_user_id = session[:user_id]
 
     new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
-    if new_social_user.email != auth_hash['info']['email']
+    if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
       session.clear
       new_social_user = nil
     end
