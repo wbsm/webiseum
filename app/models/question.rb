@@ -1,4 +1,23 @@
+=begin create_table "questions", force: true do |t|
+  t.string   "title"
+  t.text     "description"
+  t.datetime "publish_at"
+  t.datetime "finish_at"
+  t.datetime "event_at"
+  t.text     "answers"
+  t.string   "correct_answer"
+  t.binary   "image"
+  t.datetime "created_at"
+  t.datetime "updated_at"
+  t.boolean  "rank_update",         default: false, null: false
+  t.string   "avatar_file_name"
+  t.string   "avatar_content_type"
+  t.integer  "avatar_file_size"
+  t.datetime "avatar_updated_at"
+end
+=end
 class Question < ActiveRecord::Base
+  scope :not_expired, -> { where('? between publish_at and finish_at', Time.now.to_s(:db)).order('finish_at ASC') }
 
   # Paperclip
   has_attached_file :avatar, :styles => { :thumb => "64x64#" }
@@ -7,11 +26,7 @@ class Question < ActiveRecord::Base
 	validates_presence_of :title, :answers, :publish_at, :event_at, :finish_at
 	validates_uniqueness_of :title
 
-	def self.find_not_expired
-    where("finish_at > ?", Time.now.to_s(:db)).order("finish_at ASC")
-  end
-
-  def image_type(type)
+	def image_type(type)
     if avatar.present?
       avatar.url(type)
     else

@@ -18,9 +18,16 @@ class Social::ForecastsController < Social::SocialController
     forecast.rating = params['rating'+question_id]
     forecast.comment = params['comment'+question_id]
 
-    forecast.save
-
-    flash[:answer] = forecast.answer
+    if !forecast.save
+      # criar objeto de resposta para json
+      flash[:answer] = Hash.new
+      flash[:answer][:has_errors] = true
+      flash[:answer][:message] = "Campos obrigatórios: #{forecast.errors.full_messages.join(', ')}"
+    else
+      flash[:answer] = Hash.new
+      flash[:answer][:has_errors] = false
+      flash[:answer][:message] = "Você previu #{forecast.answer}"
+    end
 
     respond_to do |format|
       format.js

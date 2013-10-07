@@ -10,15 +10,13 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     session_user_id = session[:user_id]
 
-    if session_user_id.nil?
-      auth = Authentication.find_or_create(nil, auth_hash)
-    else
-      user = User.find_by_id(session_user_id)
-      # se possui session_id mas nao esta registrado no BD
-      redirect_to unregistered_webiseum_index_path && return if user.nil?
-
-      auth = Authentication.find_or_create(user, auth_hash)
+    new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
+    if new_social_user.email != auth_hash['info']['email']
+      session.clear
+      new_social_user = nil
     end
+
+    auth = Authentication.find_or_create(new_social_user, auth_hash)
 
     session[:user_id] = auth.user.id
     redirect_to social_feed_index_path
@@ -50,13 +48,13 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    session.clear
     redirect_to root_path
   end
 
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
-    session[:user_id] = nil
+    session.clear
     redirect_to unregistered_webiseum_index_path
   end
 

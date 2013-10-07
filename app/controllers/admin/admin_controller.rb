@@ -11,7 +11,7 @@ class Admin::AdminController < ApplicationController
 
       unless auth_users.include?(@logged_user.email)
         puts "################# [Webiseum] Usuario nao autorizado acessando URL: " + url_for(params)
-        redirect_to new_user_landing_page_index_path
+        redirect_to unregistered_webiseum_index_path
       end
 
     end

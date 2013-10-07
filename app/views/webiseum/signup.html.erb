@@ -30,17 +30,6 @@
                 <%= text_field_tag :email, @new_user.try(:email), class: 'form-control input-sm', placeholder: 'Email' %>
               </div>
               <div class="form-group">
-                <%= text_field_tag :birthdate, @new_user.try(:birthdate), class: 'form-control input-sm', placeholder: 'Data de aniversário' %>
-              </div>
-
-              <div class="form-group">
-                <strong>Sexo:</strong>
-                  <%= radio_button_tag :gender, "male" %>
-                  <%= label_tag(:gender_m, "Masculino") %>
-                  <%= radio_button_tag :gender, "female" %>
-                  <%= label_tag(:gender_f, "Feminino") %>
-              </div>
-              <div class="form-group">
                 <%= password_field_tag(:password, '', class: 'form-control input-sm', placeholder: 'Senha')%>
               </div>
               <div class="form-group">

@@ -1,0 +1,23 @@
+
+<h1><small>Minhas previsões</small></h1>
+<hr>
+
+<% @forecasts.try(:each) {|f| %>
+
+    <article>
+      <div class="row">
+        <div class="col-xs-12">
+          <blockquote>
+            <p>
+              <%= image_tag f.user.image_type(:thumb), size: '46' %>
+              <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
+              <a href="#" class="">
+                <%= f.question.title %>
+              </a>
+              <small>Comentário: <%= f.comment %></small>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </article>
+<% } %>

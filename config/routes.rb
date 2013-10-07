@@ -19,11 +19,8 @@ Webiseum::Application.routes.draw do
   # Social module
   namespace :social do
     resources :feed, only: [:index] do
-      collection do
-        get :all_forecasts, :user_forecast
-      end
       member do
-        get :filter_by_tags
+        get :question, :forecast, :tag
       end
     end
 

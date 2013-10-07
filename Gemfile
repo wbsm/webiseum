@@ -56,6 +56,7 @@ gem 'omniauth'
 gem 'omniauth-identity'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
 
 # Paperclip - avatar manager
 gem "paperclip", "~> 3.0"

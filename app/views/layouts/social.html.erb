@@ -59,13 +59,13 @@
                 <h6>PRINCIPAL</h6>
                 <ul style="list-style-type: none; padding-left: 6px;">
                   <li>
-                    <a href="<%= social_feed_index_path %>"><i class="icon-info-sign"></i> Perguntas</a>
+                    <a href="<%= question_social_feed_path(:all) %>"><i class="icon-info-sign"></i> Perguntas</a>
                   </li>
                   <li>
-                    <a href="<%= user_forecast_social_feed_index_path %>"><i class="icon-bar-chart"></i> Minhas Previs&otilde;es</a>
+                    <a href="<%= forecast_social_feed_path(session['user_id']) %>"><i class="icon-bar-chart"></i> Minhas Previs&otilde;es</a>
                   </li>
                   <li>
-                    <a href="<%= all_forecasts_social_feed_index_path %>"><i class="icon-group"></i> Todas Previs&otilde;es</a>
+                    <a href="<%= forecast_social_feed_path(:all) %>"><i class="icon-group"></i> Todas Previs&otilde;es</a>
                   </li>
                 </ul>
               </div>
@@ -74,7 +74,7 @@
               <div class="aside-menu">
                 <h6>NÚVEM DE TAGS</h6>
                 <% @tags.try(:each) {|tag| %>
-                    <p></p><a href="<%= filter_by_tags_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
+                    <p></p><a href="<%= tag_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
                 <% } %>
               </div>
             </section>
