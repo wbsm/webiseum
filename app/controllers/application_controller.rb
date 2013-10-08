@@ -9,10 +9,10 @@ class ApplicationController < ActionController::Base
 
     def verify_logged_user
 
-      logger.debug "[Webiseum][Session] Filter SessionId: #{session[:user_id]}"
+      puts "################# [Webiseum][ApplicationController] Filter SessionId: #{session[:user_id]}"
       @logged_user = User.find_by_id(session[:user_id])
       if @logged_user.nil?
-        puts "################# [Webiseum] Usuario nao autorizado acessando URL: " + url_for(params)
+        puts "################# [Webiseum][ApplicationController] Usuario nao autorizado acessando URL: " + url_for(params)
         redirect_to unregistered_webiseum_index_path
       end
 

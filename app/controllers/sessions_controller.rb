@@ -10,16 +10,16 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     session_user_id = session[:user_id]
 
-    logger.debug "[Webiseum][Session] SessionId trying to login: #{session_user_id}"
+    puts "################# [Webiseum][Session] SessionId trying to login: #{session_user_id}"
     new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
     if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
       session.clear
       new_social_user = nil
     end
 
-    logger.debug "[Webiseum][Session] User found by SessionId: #{new_social_user}"
+    puts "################# [Webiseum][Session] User found by SessionId: #{new_social_user}"
     auth = Authentication.find_or_create(new_social_user, auth_hash)
-    logger.debug "[Webiseum][Session] Auth created by SessionId: #{auth.user.id}"
+    puts "################# [Webiseum][Session] Auth created by SessionId: #{auth.user.id}"
 
     session[:user_id] = auth.user.id
     redirect_to social_feed_index_path
