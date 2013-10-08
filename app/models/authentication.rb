@@ -22,7 +22,7 @@ class Authentication < ActiveRecord::Base
       user = AuthenticationsHelper.build_user(auth_hash)
       user.save
     end
-    puts 'user erros: ' + user.errors.full_messages
+    puts 'user erros: ' + user.errors.full_messages.to_s
 
     create_social_auth(user, auth_hash)
 	end
