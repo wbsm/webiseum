@@ -39,3 +39,19 @@ Please feel free to use a different markup language if you do not plan to run
 LESS
 gem install less-rails
 gem install therubyracer
+
+
+Frameworks
+
+# social login
+gem 'omniauth'
+gem 'omniauth-identity'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-google-oauth2'
+
+# Paperclip - avatar manager
+gem "paperclip", "~> 3.0" -- imagemagick
+
+# tag cloug - JQCloud
+gem "jqcloud-rails"         -- https://github.com/lucaong/jQCloud

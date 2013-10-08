@@ -12,6 +12,12 @@ Webiseum::Application.configure do
   ENV['CONSUMER_KEY']     = 'dwOcfIQZFEBcRR2PJrA'
   ENV['CONSUMER_SECRET']  = 'fkPX3kchlKazHZpDPRXhwNBxIkoPWVHCGggPQlnjAWw'
 
+  # Google+ auth params
+  # App name: wbsm-development-env
+  # Description: wbsm-development
+  ENV['GOOGLE_KEY']       = '520650340316.apps.googleusercontent.com'
+  ENV['GOOGLE_SECRET']    = 'jgkf5IXWJPJKbmTmrusKVWoc'
+
   # Paperclip - avatar manager
   Paperclip.options[:command_path] = '/usr/bin/'
 
