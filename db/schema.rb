@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20131005223236) do
     t.datetime "event_at"
     t.text     "answers"
     t.string   "correct_answer"
-    t.binary   "image"
+    t.binary   "image_type"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "rank_update",         default: false, null: false
