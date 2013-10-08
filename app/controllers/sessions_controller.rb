@@ -10,6 +10,7 @@ class SessionsController < ApplicationController
     auth_hash = request.env['omniauth.auth']
     session_user_id = session[:user_id]
 
+    puts "################# [Webiseum][Session] Auth: #{auth_hash.to_json}"
     puts "################# [Webiseum][Session] SessionId trying to login: #{session_user_id}"
     new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
     if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
