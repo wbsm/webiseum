@@ -48,8 +48,9 @@ class Social::FeedController < Social::SocialController
     end
 
     def store_action
+      session['webiseum'] = Hash.new
       if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-        session['webiseum'], session['webiseum']['action'] = Hash.new, "#{params['action'].to_s}_user"
+        session['webiseum']['action'] = "#{params['action'].to_s}_user"
       else
         session['webiseum']['action'] = params['action'].to_s
       end
