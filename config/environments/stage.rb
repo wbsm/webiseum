@@ -16,7 +16,7 @@ Webiseum::Application.configure do
   Paperclip.options[:command_path] = "/usr/local/bin/"
 
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.cache_classes = false
 
   # Do not eager load code on boot.
   config.eager_load = false
