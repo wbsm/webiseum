@@ -16,10 +16,13 @@ class Authentication < ActiveRecord::Base
   # fluxo: webiseum o parametro auth_hash e nil e e criado o hash
 	def self.find_or_create(user, auth_hash)
     user = User.includes(:authentications).find_by_email(auth_hash['info']['email']) if !user.present?
+    puts 'user = User.includes(:authentications).find_by_email(auth_hash[info][email]) if !user.present?'
     if !user.present?
+      puts 'if !user.present?'
       user = AuthenticationsHelper.build_user(auth_hash)
       user.save
     end
+    puts 'user erros: ' + user.errors.full_messages
 
     create_social_auth(user, auth_hash)
 	end
