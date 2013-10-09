@@ -73,12 +73,6 @@
             <section>
               <div class="aside-menu">
 
-                <h6>NÚVEM DE TAGS</h6>
-                <% @tags.try(:each) {|tag| %>
-                    <p></p><a href="<%= tag_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
-                <% } %>
-                <h6>NÚVEM DE TAGS - TESTE</h6>
-
                 <script type="text/javascript">
                     $.fn.tagcloud.defaults = {
                         size: {start: 6, end: 16, unit: 'pt'},
@@ -86,26 +80,13 @@
                     };
 
                     $(function () {
-                        $('#whatever a').tagcloud();
+                        $('#tag-cloud a').tagcloud();
                     });
                 </script>
 
-                <div id="whatever">
-                  <a href="#" rel="2">Lorem</a>
-                  <a href="#" rel="4">ipsum</a>
-                  <a href="#" rel="3">dolor</a>
-                  <a href="#" rel="1">sit</a>
-                  <a href="#" rel="5">amet,</a>
-                  <a href="#" rel="6">consectetur</a>
-                  <a href="#" rel="7">adipisicing</a>
-                  <a href="#" rel="7">elit,</a>
-                  <a href="#" rel="6">sed</a>
-                  <a href="#" rel="5">do</a>
-                  <a href="#" rel="1">eiusmod</a>
-                  <a href="#" rel="3">tempor</a>
-                  <a href="#" rel="4">incididunt</a>
-                  <a href="#" rel="2">ut</a>
-                </div>
+                <h6>NÚVEM DE TAGS - TESTE</h6>
+                <%= tag_claud(@tags) %>
+
               </div>
             </section>
           </aside>
