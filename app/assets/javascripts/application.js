@@ -3,6 +3,6 @@
  //= require jquery
  //= require jquery_ujs
  //= require twitter/bootstrap
- //= require jqcloud
+ //= require jquery.tagcloud/jquery.tagcloud
  //= require_tree .
 */

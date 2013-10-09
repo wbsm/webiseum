@@ -73,47 +73,39 @@
             <section>
               <div class="aside-menu">
 
-                <script type="text/javascript">
-                    /*!
-                     * Create an array of word objects, each representing a word in the cloud
-                     */
-                    var word_array = [
-                        {text: "Lorem", weight: 10},
-                        {text: "Ipsum", weight: 9, link: "http://jquery.com/"},
-                        {text: "Dolor", weight: 8, html: {title: "I can haz any html attribute"}},
-                        {text: "Sit", weight: 7},
-                        {text: "Amet", weight: 6},
-                        {text: "Amet", weight: 5},
-                        {text: "Amet", weight: 4},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 3},
-                        {text: "Amet", weight: 2}
-                        // ...as many words as you want
-                    ];
-
-                    $(function() {
-                        // When DOM is ready, select the container element and call the jQCloud method, passing the array of words as the first argument.
-                        $("#tag-cloud").jQCloud(
-                                word_array,
-                                {shape: 'cicle'},
-                                {center: {x: 0, y: 0}}
-                        );
-                    });
-                </script>
-
                 <h6>NÚVEM DE TAGS</h6>
                 <% @tags.try(:each) {|tag| %>
                     <p></p><a href="<%= tag_social_feed_path(tag.name) %>"> <%= tag.name %></a></p>
                 <% } %>
                 <h6>NÚVEM DE TAGS - TESTE</h6>
-                <div id="tag-cloud" style="margin-top: -10px; margin-left: -20px; width: 100%; height: 150px;"></div>
+
+                <script type="text/javascript">
+                    $.fn.tagcloud.defaults = {
+                        size: {start: 6, end: 16, unit: 'pt'},
+                        color: {start: '#cde', end: '#f52'}
+                    };
+
+                    $(function () {
+                        $('#whatever a').tagcloud();
+                    });
+                </script>
+
+                <div id="whatever">
+                  <a href="#" rel="2">Lorem</a>
+                  <a href="#" rel="4">ipsum</a>
+                  <a href="#" rel="3">dolor</a>
+                  <a href="#" rel="1">sit</a>
+                  <a href="#" rel="5">amet,</a>
+                  <a href="#" rel="6">consectetur</a>
+                  <a href="#" rel="7">adipisicing</a>
+                  <a href="#" rel="7">elit,</a>
+                  <a href="#" rel="6">sed</a>
+                  <a href="#" rel="5">do</a>
+                  <a href="#" rel="1">eiusmod</a>
+                  <a href="#" rel="3">tempor</a>
+                  <a href="#" rel="4">incididunt</a>
+                  <a href="#" rel="2">ut</a>
+                </div>
               </div>
             </section>
           </aside>

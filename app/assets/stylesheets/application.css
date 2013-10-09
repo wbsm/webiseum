@@ -4,7 +4,6 @@
  * 
  *= require twitter/bootstrap.css
  *= require font-awesome/font-awesome.css
- *= require jqcloud
  *= require_self
  */
  .navbar-align-logo {

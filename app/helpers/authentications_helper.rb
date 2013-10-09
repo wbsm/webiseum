@@ -13,11 +13,11 @@ module AuthenticationsHelper
 
     if auth_hash['provider'] == 'facebook' || auth_hash['provider'] == 'google_oauth2'
         params['gender'], params['birthday'] = auth_hash['extra']['raw_info']['gender'], auth_hash['extra']['raw_info']['birthday']
-        params['avatar'] = URI.parse(auth_hash['info']['image'])
     elsif auth_hash['provider'] == 'twitter'
         params['first_name'], params['last_name'] = auth_hash['info']['name'].split(' ').first, auth_hash['info']['name'].split(' ').last
-        params['avatar'] = URI.parse(auth_hash['info']['image'])
     end
+
+    params['avatar'] = URI.parse(auth_hash['info']['image']) if auth_hash['info']['image'].present?
 
     params['password'] = '111111111111111' # nome@timestamp
     params['password_confirmation'] = '111111111111111'

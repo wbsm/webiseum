@@ -8,15 +8,15 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    session_user_id = session[:user_id]
+    #session_user_id = session[:user_id]
 
-    new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
-    if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
-      session.clear
-      new_social_user = nil
-    end
-
-    auth = Authentication.find_or_create(new_social_user, auth_hash)
+    #new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
+    #if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
+      #session.clear
+      #new_social_user = nil
+    #end
+    session.clear
+    auth = Authentication.find_or_create(nil, auth_hash)
 
     session[:user_id] = auth.user.id
     redirect_to social_feed_index_path
