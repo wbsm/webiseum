@@ -9,11 +9,28 @@ class Admin::RankingGeneratorController < Admin::AdminController
 
       correct_answer = q.correct_answer
 
+      scoreMultiply = [10, 15, 20, 25, 30]
+
       q.forecasts.each do |f|
-        if correct_answer == f.answer
-          f.user.rank_score += f.rating
-          f.user.save
+
+        user_id = f.user.id
+        rating = f.rating - 1
+
+        is_correct = correct_answer == f.answer
+
+        # rank geral
+        rank = Rank.find_or_create_by(:user_id => user_id)
+        is_correct ? rank.score += scoreMultiply[rating] : rank.score += (scoreMultiply[rating]*-1)
+        rank.save
+
+        # rank by tags
+        f.question.tags.each do |tag|
+          tag_rank = TagRank.find_or_create_by(:user_id => user_id, :tag_id => tag.id)
+
+          is_correct ? tag_rank.score += scoreMultiply[rating] : tag_rank.score -= scoreMultiply[rating]
+          tag_rank.save
         end
+
       end
 
       q.rank_update = true

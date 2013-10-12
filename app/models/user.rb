@@ -49,5 +49,10 @@ class User < OmniAuth::Identity::Models::ActiveRecord
   # associations
   has_many :authentications
   has_many :forecasts
+
+  has_many :comments
+
+  has_many :ranks
+  has_many :tag_ranks
 end
 	

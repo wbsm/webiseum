@@ -18,5 +18,6 @@ class Forecast < ActiveRecord::Base
   # associations
 	belongs_to :user
 	belongs_to :question
-	
+
+  has_many :comments
 end

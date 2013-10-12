@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131005223236) do
+ActiveRecord::Schema.define(version: 20131012170134) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20131005223236) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "comments", force: true do |t|
+    t.text     "message"
+    t.integer  "forecast_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["forecast_id"], name: "index_comments_on_forecast_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "forecasts", force: true do |t|
     t.integer  "rating"
@@ -53,6 +64,26 @@ ActiveRecord::Schema.define(version: 20131005223236) do
     t.integer "question_id"
     t.integer "tag_id"
   end
+
+  create_table "ranks", force: true do |t|
+    t.integer  "score",      default: 0
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ranks", ["user_id"], name: "index_ranks_on_user_id"
+
+  create_table "tag_ranks", force: true do |t|
+    t.integer  "score",      default: 0
+    t.integer  "user_id"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tag_ranks", ["tag_id"], name: "index_tag_ranks_on_tag_id"
+  add_index "tag_ranks", ["user_id"], name: "index_tag_ranks_on_user_id"
 
   create_table "tags", force: true do |t|
     t.string   "name"
