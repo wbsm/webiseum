@@ -8,43 +8,15 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    #session_user_id = session[:user_id]
+    
+    # time_zone do browser    
+    auth_hash['time_zone'] = cookies["jstz_time_zone"]
 
-    #new_social_user = User.find_by_id(session_user_id) if !session_user_id.nil?
-    #if new_social_user.present? && new_social_user.email != auth_hash['info']['email']
-      #session.clear
-      #new_social_user = nil
-    #end
     session.clear
     auth = Authentication.find_or_create(nil, auth_hash)
 
     session[:user_id] = auth.user.id.to_i
     redirect_to social_feed_index_path
-=begin
-  # first login
-    unless session_user_id
-     auth = Authentication.find_or_create(auth_hash)
-
-      session[:user_id] = auth.user.id
-      puts "################# [Webiseum] Usuario acabou de logar: " + auth.user.email.to_s
-    else
-      logged_user = User.find_by_id(session_user_id)
-
-      if !logged_user.nil?
-        logged_user.build_provider(auth_hash)
-
-        puts "################# [Webiseum] Usuario acabou de logar: " + logged_user.to_s
-      else
-        puts "################# [Webiseum] Usuario nao autorizado..."
-        # redirect to index with auth info
-        redirect_to unregistered_webiseum_index_path && return
-      end
-
-    end
-
-    # redirect to index with auth info
-    redirect_to social_feed_index_path
-=end
   end
 
   def destroy

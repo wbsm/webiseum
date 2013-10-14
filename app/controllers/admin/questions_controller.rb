@@ -50,6 +50,7 @@ class Admin::QuestionsController < Admin::AdminController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    puts "############### zone: #{params['question']['time_zone']}"
     if params[:tags].nil?
       @question.tags = []
     else

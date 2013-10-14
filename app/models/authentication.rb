@@ -19,9 +19,14 @@ class Authentication < ActiveRecord::Base
 
     if !user.present?
       user = AuthenticationsHelper.build_user(auth_hash)
-      user.save
     end
 
+    # atualiza usuario com o time_zone do browser
+    user.time_zone = auth_hash['time_zone'] if auth_hash['time_zone'].present?
+
+    # sempre atualiza
+    user.save
+    
     create_social_auth(user, auth_hash)
 	end
 
@@ -37,6 +42,7 @@ class Authentication < ActiveRecord::Base
   private
     def self.create_auth(user, auth_hash)
       provider_name, provider_uid = auth_hash['provider'], auth_hash['uid']
+      
       user.authentications.each do |auth|
         return auth if auth.provider == provider_name
       end

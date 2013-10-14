@@ -9,7 +9,7 @@ module AuthenticationsHelper
 
   # refactor passar dependencia decontroller para fora
   def self.build_user(auth_hash)
-    params = ActionController::Parameters.new(auth_hash['info']).permit(:name, :email, :first_name, :last_name, :image_type, :password, :password_confirmation)
+    params = ActionController::Parameters.new(auth_hash['info']).permit(:name, :email, :first_name, :last_name, :image_type, :password, :password_confirmation, :time_zone)
 
     if auth_hash['provider'] == 'facebook' || auth_hash['provider'] == 'google_oauth2'
         params['gender'], params['birthday'] = auth_hash['extra']['raw_info']['gender'], auth_hash['extra']['raw_info']['birthday']
@@ -22,8 +22,7 @@ module AuthenticationsHelper
     params['password'] = '111111111111111' # nome@timestamp
     params['password_confirmation'] = '111111111111111'
 
-    user = User.create(params)
-    user
+    User.new(params)
   end
 
 end

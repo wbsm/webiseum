@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131012170134) do
+ActiveRecord::Schema.define(version: 20131014020505) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20131012170134) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rank_score",          default: 0, null: false
+    t.integer  "rank_score",          default: 0,                   null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
@@ -107,6 +107,7 @@ ActiveRecord::Schema.define(version: 20131012170134) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.date     "birthday"
+    t.string   "time_zone",           default: "America/Sao_Paulo"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

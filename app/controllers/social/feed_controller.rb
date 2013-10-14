@@ -4,7 +4,7 @@ class Social::FeedController < Social::SocialController
   before_action :store_action, only: [:question, :forecast]
 
   def index
-  	@questions = Question.not_expired
+    @questions = Question.not_expired
   end
 
   def question

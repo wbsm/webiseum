@@ -4,11 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :verify_logged_user
+  around_filter :user_time_zone
 
   private
 
-    def verify_logged_user
+    def user_time_zone(&block)
+      if @logged_user.present?
+        Time.use_zone(@logged_user.time_zone, &block) 
+      else 
+        Time.use_zone(Time.zone, &block) 
+      end
+    end
 
+    def verify_logged_user
       puts "################# [Webiseum][ApplicationController] Filter SessionId: #{session[:user_id]}"
       @logged_user = User.find_by_id(session[:user_id])
       if @logged_user.nil?
