@@ -11,7 +11,8 @@ create_table "forecasts", force: true do |t|
 =end
 class Forecast < ActiveRecord::Base
   scope :order_by_time, -> { order('updated_at DESC') }
-  scope :from_user, -> (user_id) { joins(:user).where('users.id = ?', user_id) }
+  scope :by_user, -> (user_id) { where(:user_id => user_id) }
+  scope :by_tag, -> (tag_name) { joins(question: :tags).where('tags.name' => tag_name) }
 
   validates_presence_of :rating, :answer
 

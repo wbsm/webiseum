@@ -20,17 +20,18 @@ class Admin::RankingGeneratorController < Admin::AdminController
 
         # rank geral
         rank = Rank.find_or_create_by(:user_id => user_id)
-        is_correct ? rank.score += scoreMultiply[rating] : rank.score += (scoreMultiply[rating]*-1)
-        rank.save
-
+        
         # rank by tags
         f.question.tags.each do |tag|
           tag_rank = TagRank.find_or_create_by(:user_id => user_id, :tag_id => tag.id)
 
           is_correct ? tag_rank.score += scoreMultiply[rating] : tag_rank.score -= scoreMultiply[rating]
           tag_rank.save
+
+          is_correct ? rank.score += scoreMultiply[rating] : rank.score += (scoreMultiply[rating]*-1)
         end
 
+        rank.save
       end
 
       q.rank_update = true

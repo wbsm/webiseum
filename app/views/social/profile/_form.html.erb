@@ -1,14 +1,14 @@
-<%= form_for @logged_user, url: social_profile_path(@logged_user), html: {:multipart => true, class: "nifty_form"} do |f| %>
+<%= form_for @user, url: social_profile_path(@user), html: {:multipart => true, class: "nifty_form"} do |f| %>
 
 	<fieldset>
 		<legend><%= form_title %></legend>
-		<% if @logged_user.errors.any? %>
+		<% if @user.errors.any? %>
 			<div id="error_explanation">
 			    <h4>
 			    	O formulário possui os seguintes erros:
 			    </h4>
 			    <ul>
-					<% @logged_user.errors.full_messages.each do |message|%>
+					<% @user.errors.full_messages.each do |message|%>
 						<li><%= message %> </li> <% end %>
 				</ul>
 			</div>

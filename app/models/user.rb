@@ -52,7 +52,7 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   has_many :comments
 
-  has_many :ranks
+  has_one :rank
   has_many :tag_ranks
 end
 	

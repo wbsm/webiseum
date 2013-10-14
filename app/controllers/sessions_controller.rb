@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     session.clear
     auth = Authentication.find_or_create(nil, auth_hash)
 
-    session[:user_id] = auth.user.id
+    session[:user_id] = auth.user.id.to_i
     redirect_to social_feed_index_path
 =begin
   # first login

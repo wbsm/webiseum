@@ -102,12 +102,12 @@
               <h6>RANKING</h6>
               <ul style="list-style-type: none; padding-left: 6px;">
 
-                <% @rank.each_with_index do |user, index| %>
+                <% @rank.each_with_index do |rank, index| %>
 
                     <li>
-                      <strong><small><%= index+1 %>.</small></strong>
-                      <%= image_tag user.image_type(:small), size: '20' %>
-                      <small><%= user.name %></small>
+                      <%= image_tag rank.user.image_type(:small), size: '20' %>
+                      <strong><small><%= index+1 %>. </small></strong>
+                      <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
                     </li>
 
                 <% end  %>

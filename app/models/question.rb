@@ -17,7 +17,8 @@
 end
 =end
 class Question < ActiveRecord::Base
-  scope :not_expired, -> { where('? between publish_at and finish_at', Time.now.to_s(:db)).order('finish_at ASC') }
+  scope :not_expired, -> { where('? between publish_at and finish_at and rank_update = ?', Time.now.to_s(:db), false).order('finish_at ASC') }
+  scope :by_tag, -> (tag_name) { joins(:tags).where('tags.name' => tag_name) }
 
   # Paperclip
   has_attached_file :avatar, :styles => { :thumb => "64x64#" }

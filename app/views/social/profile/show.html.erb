@@ -8,25 +8,31 @@
 <div class="clearfix"></div>
 
 
-<%= image_tag @logged_user.image_type(:thumb), class: 'media-object', size: '46' %>
+<%= image_tag @user.image_type(:thumb), class: 'media-object', size: '46' %>
 </br>
 <p>
   <strong>Nome exibição:</strong>
-  <%= @logged_user.name%>
+  <%= @user.name%>
 </p>
 <p>
   <strong>Nome:</strong>
-  <%= @logged_user.first_name%>
+  <%= @user.first_name%>
 </p>
 <p>
   <strong>Sobrenome:</strong>
-  <%= @logged_user.last_name %>
+  <%= @user.last_name %>
 </p>
 <p>
   <strong>Email:</strong>
-  <%= @logged_user.email %>
+  <%= @user.email %>
 </p>
 <p>
   <strong>Rank score:</strong>
-  <%= @logged_user.rank_score %>
+  <%= @user.rank != nil ? @user.rank.score : 0 %>
 </p>
+<% @user.tag_ranks.each do |tag_rank| %>
+  <p>
+    <strong>[<%= tag_rank.tag.name %>] Rank score:</strong>
+    <%= tag_rank.score %>
+  </p>
+<% end %>

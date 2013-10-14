@@ -19,7 +19,7 @@ class Social::FeedController < Social::SocialController
 
   def forecast
     if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-      @forecasts = Forecast.order_by_time.from_user(params['id'])
+      @forecasts = Forecast.order_by_time.by_user(params['id'])
       render 'social/feed/user_forecasts'
     else
       @forecasts = Forecast.order_by_time
@@ -29,13 +29,16 @@ class Social::FeedController < Social::SocialController
 
   def tag
     if current_action == 'question'
-      @questions = Question.joins(:tags).where('tags.name' => params[:id]).not_expired
+      @questions = Question.by_tag(params[:id]).not_expired
+      @rank = TagRank.by_tag(params[:id])
       render 'social/feed/index' and return
     elsif current_action == 'forecast'
-      @forecasts = Forecast.joins(question: :tags).where('tags.name' => params[:id]).distinct(:question).order_by_time
+      @forecasts = Forecast.by_tag(params[:id]).distinct(:question).order_by_time
+      @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     elsif current_action == 'forecast_user'
-      @forecasts = Forecast.joins(question: :tags).where('tags.name' => params[:id], user_id: session['user_id']).distinct(:question).order_by_time
+      @forecasts = Forecast.by_tag(params[:id]).by_user(session['user_id']).distinct(:question).order_by_time
+      @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     end
 

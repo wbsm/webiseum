@@ -3,7 +3,7 @@ class Social::SocialController < ApplicationController
 
   private
     def populate_common_models
-      @rank = User.order('rank_score desc').limit(10)
+      @rank = Rank.order('score desc').limit(10)
       @tags = Tag.all
     end
 
