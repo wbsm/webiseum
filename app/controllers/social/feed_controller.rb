@@ -19,7 +19,7 @@ class Social::FeedController < Social::SocialController
 
   def forecast
     if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-      @forecasts = Forecast.order_by_time.by_user(params['id'])
+      @forecasts = Forecast.by_user(params['id']).order_by_time
       render 'social/feed/user_forecasts'
     else
       @forecasts = Forecast.order_by_time
@@ -33,11 +33,11 @@ class Social::FeedController < Social::SocialController
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/index' and return
     elsif current_action == 'forecast'
-      @forecasts = Forecast.by_tag(params[:id]).distinct(:question).order_by_time
+      @forecasts = Forecast.by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     elsif current_action == 'forecast_user'
-      @forecasts = Forecast.by_tag(params[:id]).by_user(session['user_id']).distinct(:question).order_by_time
+      @forecasts = Forecast.by_user(session['user_id']).by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     end

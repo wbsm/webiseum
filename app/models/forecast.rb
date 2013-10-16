@@ -12,7 +12,8 @@ create_table "forecasts", force: true do |t|
 class Forecast < ActiveRecord::Base
   scope :order_by_time, -> { order('updated_at DESC') }
   scope :by_user, -> (user_id) { where(:user_id => user_id) }
-  scope :by_tag, -> (tag_name) { joins(question: :tags).where('tags.name' => tag_name) }
+  scope :by_user_name, -> (user_name) { joins(:user).where('users.name like ?', "%#{user_name}%") }
+  scope :by_tag, -> (tag_name) { joins(question: :tags).where('tags.name' => tag_name).distinct(:question) }
 
   validates_presence_of :rating, :answer
 

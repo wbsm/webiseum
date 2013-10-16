@@ -31,6 +31,12 @@ Webiseum::Application.routes.draw do
       end
     end
 
+    resources :search, only: [:search] do
+      collection do
+        get '/', to: :search
+      end
+    end
+
     resources :profile, only: [:show, :edit, :update]
   end
 
