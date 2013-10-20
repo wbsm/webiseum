@@ -36,6 +36,8 @@ class Social::ForecastsController < Social::SocialController
       flash[:answer][:message] = "Você previu #{forecast.answer}"
     end
 
+    puts "################# [Webiseum][ForecastsController:match] flash #{flash[:answer]}"
+
     respond_to do |format|
       format.js
     end
