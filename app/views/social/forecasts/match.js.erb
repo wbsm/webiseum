@@ -1,4 +1,5 @@
-
+         alert('errors: ' <%flash[:answer][:has_errors]%>)
+         alert('mesages: ' <%flash[:answer][:message]%>)
 <% if flash[:answer][:has_errors] %>
     $('div#match_forecast_<%=params["question_id"]%> span#match_response_<%=params["question_id"]%>').html('</br><%= flash[:answer][:message] %>');
 <% elsif !flash[:answer][:has_errors] %>
