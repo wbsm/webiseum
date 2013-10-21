@@ -18,7 +18,7 @@
               <%= hidden_field_tag(:question_id, question.id) %>
               <div>
                 <% question.answers.split(";").each do |answer| %>
-                    <%= radio_button_tag('answer'+question.id.to_s, answer) %> <%= answer %>
+                    <%= radio_button_tag('answer'+question.id.to_s, answer) %> <%= answer %>dddd
                 <% end %>
               </div>
 
