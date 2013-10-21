@@ -22,7 +22,7 @@ class Social::ForecastsController < Social::SocialController
     forecast.answer = params['answer'+question_id]
     forecast.rating = params['rating'+question_id]
     forecast.comment = params['comment'+question_id]
-
+    puts "################# [Webiseum][ForecastsController:match] params #{params}"
     if !forecast.save
       puts "################# [Webiseum][ForecastsController:match] in !forecast.save"
       # criar objeto de resposta para json
