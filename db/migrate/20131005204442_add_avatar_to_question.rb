@@ -1,9 +1,9 @@
 class AddAvatarToQuestion < ActiveRecord::Migration
   def self.up
-    add_attachment :question, :avatar
+    add_attachment :questions, :avatar
   end
 
   def self.down
-    remove_attachment :question, :avatar
+    remove_attachment :questions, :avatar
   end
 end
