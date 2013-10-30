@@ -1,4 +1,6 @@
 class Social::SocialController < ApplicationController
+  layout 'social'
+
   before_action :populate_common_models
 
   private

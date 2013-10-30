@@ -8,7 +8,7 @@ class ForecastsControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:forecasts)
+    assert_not_nil assigns(:question_forecast)
   end
 
   test "should get new" do

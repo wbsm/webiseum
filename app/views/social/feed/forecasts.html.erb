@@ -10,7 +10,7 @@
             <p>
               <%= image_tag f.user.image_type(:thumb), size: '46' %>
               <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
-              <a href="#" class="">
+              <a href="<%= social_question_path(f.question) %>" class="">
                 <%= f.question.title %>
               </a>
               <p>Confiança: <%= f.rating %></p> 

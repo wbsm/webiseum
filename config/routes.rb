@@ -1,56 +1,45 @@
 Webiseum::Application.routes.draw do
 
   # Landing Page paths
-  root 'webiseum#index'
+  root  'webiseum#index'
+
+
+  # Login paths
+  get   '/signup', to: 'sessions#new', as: :signup
+  get   '/logout', to: 'sessions#destroy', as: :logout
+  get   '/unregistered', to: 'webiseum#unregistered', as: 'unregistered'
 
   # Auth paths
-  get   '/signup', :to => 'sessions#new', :as => :signup
-  get   '/logout', :to => 'sessions#destroy', :as => :logout
-  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
   match '/auth/failure', :to => 'sessions#failure', via: [:get]
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
 
-  # Landing page
-  resources :webiseum, only: [:index] do
-    collection do
-      get :unregistered
-    end
-  end
+  # Feed and Social paths
+  get   '/feed', to: 'social/feed#index', as: 'feed'
+  get   '/questions', to: 'social/feed#index', as: 'feed_questions'
+  get   '/forecasts/:id', to: 'social/feed#forecast', as: 'feed_forecasts'
+  get   '/tags/:id', to: 'social/feed#tag', as: 'feed_tags'
 
-  # Social module
+  # Social Module
   namespace :social do
-    resources :feed, only: [:index] do
-      member do
-        get :question, :forecast, :tag
-      end
-    end
+    resources :profile,           only: [:show, :edit, :update]
+    resources :question,          only: [:show]
+    resources :question_forecast, only: [:new, :update]
 
-    resources :forecasts do
-      collection do
-        post :match
-        get :rematch
-      end
-    end
-
-    resources :search, only: [:search] do
+    # refazer search
+    resources :search,            only: [:search] do
       collection do
         get '/', to: :search
       end
     end
-
-    resources :profile, only: [:show, :edit, :update]
   end
 
   # Admin module
   namespace :admin do
+    get   '/ranking_generator', to: 'ranking_generator#generate'
+
     resources :dashboard, :questions, :users, :tags do
       collection do
         get 'search'
-      end
-    end
-
-    resources :ranking_generator do
-      collection do
-        get 'generate'
       end
     end
   end

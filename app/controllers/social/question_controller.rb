@@ -1,4 +1,4 @@
-class Social::QuestionsController < Social::SocialController
+class Social::QuestionController < Social::SocialController
   before_action :set_question, only: [:show]
 
   def show

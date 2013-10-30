@@ -1,7 +1,5 @@
 class Social::FeedController < Social::SocialController
-	layout "social"
-
-  before_action :store_action, only: [:question, :forecast]
+	before_action :store_action, only: [:question, :forecast]
 
   def index
     @questions = Question.not_expired
@@ -20,11 +18,12 @@ class Social::FeedController < Social::SocialController
   def forecast
     if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
       @forecasts = Forecast.by_user(params['id']).order_by_time
-      render 'social/feed/user_forecasts'
+      #render 'social/feed/user_forecasts'
     else
       @forecasts = Forecast.order_by_time
-      render 'social/feed/forecasts'
+      #render 'social/feed/forecasts'
     end
+    render 'social/feed/forecasts'
   end
 
   def tag

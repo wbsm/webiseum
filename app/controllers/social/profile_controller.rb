@@ -1,5 +1,4 @@
 class Social::ProfileController < Social::SocialController
-  layout "social"
 
   def show
     @user = User.find_by_id(session[:user_id])

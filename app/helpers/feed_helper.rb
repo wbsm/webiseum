@@ -8,7 +8,7 @@ module FeedHelper
     content = '<div id="tag-cloud"> '
 
     tags.each_with_index do |tag, index|
-      content += link_to tag.name, tag_social_feed_path(tag.name.downcase), rel: rel_order[index.divmod(10).last]
+      content += link_to tag.name, feed_tags_path(tag.name.downcase), rel: rel_order[index.divmod(10).last]
       content += ' '
     end
 

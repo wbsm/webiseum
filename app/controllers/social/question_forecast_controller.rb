@@ -1,8 +1,7 @@
-class Social::ForecastsController < Social::SocialController
-  layout "social"
+class Social::QuestionForecastController < Social::SocialController
 
   # match forecast user -> question
-  def match
+  def new
     user_id = session['user_id']
     question_id = params['question_id']
 
@@ -44,7 +43,7 @@ class Social::ForecastsController < Social::SocialController
   end
 
   # rematch forecast user -> question
-  def rematch
+  def update
     respond_to do |format|
       format.js
     end
