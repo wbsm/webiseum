@@ -9,9 +9,10 @@ Ruby on Rails Version
 How-to install in
 * MacOS: https://gist.github.com/6prado/9141cf791db96b10ac9a
 * Ubuntu: https://gist.github.com/6prado/416a143da3173f117dff
-
+=== Run before DB scripts
+* bundle install
+* gem install rdoc-data; rdoc-data --install
 === Create Database dependencies
-Run "bundle install" before DB scripts 
 * Local:			rake db:create db:migrate
 * Stage:			rake db:create db:migrate
 * Production:	rake db:create db:migrate
