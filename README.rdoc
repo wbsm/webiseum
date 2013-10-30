@@ -1,57 +1,33 @@
-== README
+== Webiseum Website config
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=== How-to install Ruby on Rails Version
 
-Things you may want to cover:
+Ruby on Rails Version
+* Ruby: 2.0.0
+* Rails: 4.0.0
 
-* Ruby version
+How-to install in
+* MacOS: https://gist.github.com/6prado/9141cf791db96b10ac9a
+* Ubuntu: https://gist.github.com/6prado/416a143da3173f117dff
+=== Run before DB scripts
+* bundle install
+* gem install rdoc-data; rdoc-data --install
+=== Create Database dependencies
+* Local:			rake db:create db:migrate
+* Stage:			rake db:create db:migrate
+* Production:	rake db:create db:migrate
+	
+== Frameworks
 
-* System dependencies
+==== Social Login
+* gem 'omniauth'
+* gem 'omniauth-identity'
+* gem 'omniauth-facebook'
+* gem 'omniauth-twitter'
+* gem 'omniauth-google-oauth2'
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
-
-
-
-
-
-
-
-
-
-****
-LESS
-gem install less-rails
-gem install therubyracer
-
-
-Frameworks
-
-# social login
-gem 'omniauth'
-gem 'omniauth-identity'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-gem 'omniauth-google-oauth2'
-
-# Paperclip - avatar manager
+==== Paperclip - Avatar Manager
 gem "paperclip", "~> 3.0" -- imagemagick
 
-# tag cloug - JQCloud
+==== Tag Cloug - JQCloud
 gem "jqcloud-rails"         -- https://github.com/lucaong/jQCloud
