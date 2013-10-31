@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
       @logged_user = User.find_by_id(session[:user_id])
       if @logged_user.nil?
         puts "################# [Webiseum][ApplicationController] Usuario nao autorizado acessando URL: " + url_for(params)
-        redirect_to unregistered_webiseum_index_path and return
+        redirect_to unregistered_path and return
       end
 
     end

@@ -19,7 +19,8 @@ Webiseum::Application.configure do
   ENV['GOOGLE_SECRET']    = 'jgkf5IXWJPJKbmTmrusKVWoc'
 
   # Paperclip avatar manager
-  Paperclip.options[:command_path] = '/usr/local/bin/'
+  #Paperclip.options[:command_path] = '/usr/local/bin/'
+  Paperclip.options[:command_path] = '/usr/bin/'
 
   # Settings specified here will take precedence over those in config/application.rb.
 

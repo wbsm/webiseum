@@ -35,7 +35,7 @@ class Social::FeedController < Social::SocialController
       @forecasts = Forecast.by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
-    elsif current_action == 'forecast_user'
+    elsif current_action == 'forecast_with_id'
       @forecasts = Forecast.by_user(session['user_id']).by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
@@ -52,7 +52,7 @@ class Social::FeedController < Social::SocialController
     def store_action
       session['webiseum'] = Hash.new
       if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-        session['webiseum']['action'] = "#{params['action'].to_s}_user"
+        session['webiseum']['action'] = "#{params['action'].to_s}_with_id"
       else
         session['webiseum']['action'] = params['action'].to_s
       end

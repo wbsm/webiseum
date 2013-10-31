@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
     auth = Authentication.find_or_create(nil, auth_hash)
 
     session[:user_id] = auth.user.id.to_i
-    redirect_to social_feed_index_path
+    redirect_to feed_path
   end
 
   def destroy
@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
     session.clear
-    redirect_to unregistered_webiseum_index_path
+    redirect_to unregistered_path
   end
 
 end
