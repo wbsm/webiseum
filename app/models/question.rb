@@ -20,7 +20,7 @@ class Question < ActiveRecord::Base
   scope :not_expired, -> { where('? between publish_at and finish_at and rank_update = ?', Time.zone.now.to_s(:db), false).order('finish_at ASC') }
   scope :by_tag, -> (tag_name) { joins(:tags).where('lower(tags.name) = ?', tag_name.downcase) }
   #scope :not_forecasted, -> (user_id) { includes(:forecasts).where('forecasts.user_id != ?', user_id).references(:forecasts) }
-  scope :not_forecasted, -> (user_id) { joins('INNER JOIN forecasts ON forecasts.question_id != questions.id').where('forecasts.user_id == ?', user_id) }
+  #scope :not_forecasted, -> (user_id) { joins('INNER JOIN forecasts ON forecasts.question_id != questions.id').where('forecasts.user_id == ?', user_id) }
 
   # Paperclip
   has_attached_file :avatar, :styles => { :thumb => "64x64#" }
@@ -38,7 +38,7 @@ class Question < ActiveRecord::Base
   end
 
   # associations
-  has_many :forecasts
+  has_many :forecasts, order: 'updated_at DESC'
   has_many :users, through: :forecasts
 
   has_and_belongs_to_many :tags
