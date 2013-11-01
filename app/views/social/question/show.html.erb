@@ -27,7 +27,7 @@
 
           <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
           <span id="new_forecast_response_<%= @question.id %>">
-           </br><%= flash[:answer][:message] %>
+           </br><%= flash[:answer][:message] if !flash[:answer].nil? %>
           </span>
       <% end %>
     </div>
