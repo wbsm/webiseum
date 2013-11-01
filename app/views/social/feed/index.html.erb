@@ -12,8 +12,8 @@
       </div>
       <div class="col-xs-7">
         <label style="margin-left: 5px;"><%= question.title %></label>
-        <div id="match_forecast_<%= question.id %>">
-          <%= form_for Forecast.new, url: new_social_question_forecast_path(@forecast), remote: true do |f| %>
+        <div id="create_forecast_<%= question.id %>">
+          <%= form_for Forecast.new, url: social_question_forecast_index_path(@forecast), remote: true do |f| %>
 
               <%= hidden_field_tag(:question_id, question.id) %>
               <div>
@@ -34,15 +34,10 @@
               </div>
 
               <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
-              <span id="match_response_<%= question.id %>"></span>
+              <span id="create_forecast_response_<%= question.id %>"></span>
             <% end %>
         </div>
 
-        <div id="rematch_forecast_<%= question.id %>" style="margin-top: 15px; display: none;">
-          <i class="icon-quote-left pull-left icon-muted"></i><span id="match_response_<%= question.id %>"></span>
-          <a data-remote="true" href="<%= social_question_forecast_path(:user_id => session[:user_id], :question_id => question.id) %>"class="btn btn-link btn-sm pull-right" style="margin-top: -5px;"> 
-          Editar previsão <i class="icon-edit icon-large"></i></a>
-        </div>
       </div>
       <div class="col-xs-3">
         <div>

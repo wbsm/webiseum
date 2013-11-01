@@ -10,6 +10,8 @@ create_table "forecasts", force: true do |t|
   end
 =end
 class Forecast < ActiveRecord::Base
+  include ForecastMatch
+
   scope :order_by_time, -> { order('updated_at DESC') }
   scope :by_user, -> (user_id) { where(:user_id => user_id) }
   scope :by_user_name, -> (user_name) { joins(:user).where('users.name like ?', "%#{user_name}%") }

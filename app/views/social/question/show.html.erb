@@ -1,1 +1,56 @@
-asdf
+<div class="media">
+  <a class="pull-left" href="#">
+    <%= image_tag @question.image_type(:thumb), size: '96', class: 'media-object' %>
+  </a>
+  <div class="media-body" style="padding-left: 5px;">
+    <h4 class="media-heading"><%= @question.title %></h4>
+    <div id="new_forecast_<%= @question.id %>">
+      <%= form_for Forecast.new, url: social_question_index_path(@forecast) do |f| %>
+
+          <%= hidden_field_tag(:question_id, @question.id) %>
+          <div>
+            <% @question.answers.split(";").each do |answer| %>
+                <%= radio_button_tag('answer'+@question.id.to_s, answer.strip) %> <%= answer.strip %>
+            <% end %>
+          </div>
+
+          <%= text_area_tag('comment'+@question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
+
+          <div class="pull-left">
+            <small class="">Confiança da previsão: </small>
+            <%= radio_button_tag('rating'+@question.id.to_s, 1) %>
+            <%= radio_button_tag('rating'+@question.id.to_s, 2) %>
+            <%= radio_button_tag('rating'+@question.id.to_s, 3) %>
+            <%= radio_button_tag('rating'+@question.id.to_s, 4) %>
+            <%= radio_button_tag('rating'+@question.id.to_s, 5) %>
+          </div>
+
+          <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
+          <span id="new_forecast_response_<%= @question.id %>">
+           </br><%= flash[:answer][:message] %>
+          </span>
+      <% end %>
+    </div>
+
+  </div>
+</div>
+
+<hr/>
+
+<% @question.forecasts.try(:each) {|f| %>
+
+    <article>
+      <div class="row">
+        <div class="col-xs-12">
+          <blockquote>
+            <p>
+              <%= image_tag f.user.image_type(:thumb), size: '46' %>
+              <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong>
+            <p>Confiança: <%= f.rating %></p>
+            <p>Comentário: <%= f.comment %></p>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </article>
+<% } %>

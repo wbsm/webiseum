@@ -15,15 +15,15 @@ Webiseum::Application.routes.draw do
 
   # Feed and Social paths
   get   '/feed', to: 'social/feed#index', as: 'feed'
-  get   '/questions', to: 'social/feed#index', as: 'feed_questions'
+  get   '/questions', to: 'social/feed#question', as: 'feed_questions'
   get   '/forecasts/:id', to: 'social/feed#forecast', as: 'feed_forecasts'
   get   '/tags/:id', to: 'social/feed#tag', as: 'feed_tags'
 
   # Social Module
   namespace :social do
     resources :profile,           only: [:show, :edit, :update]
-    resources :question,          only: [:show]
-    resources :question_forecast, only: [:new, :update]
+    resources :question,          only: [:show, :create]
+    resources :question_forecast, only: [:create, :update]
 
     # refazer search
     resources :search,            only: [:search] do
