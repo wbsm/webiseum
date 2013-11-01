@@ -8,27 +8,34 @@
       <%= form_for Forecast.new, url: social_question_index_path(@forecast) do |f| %>
 
           <%= hidden_field_tag(:question_id, @question.id) %>
-          <div>
-            <% @question.answers.split(";").each do |answer| %>
-                <%= radio_button_tag('answer'+@question.id.to_s, answer.strip) %> <%= answer.strip %>
-            <% end %>
-          </div>
+          
+          <% if @question.correct_answer.nil? || @question.correct_answer.empty? %>
 
-          <%= text_area_tag('comment'+@question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
+              <div>
+                <% @question.answers.split(";").each do |answer| %>
+                    <%= radio_button_tag('answer'+@question.id.to_s, answer.strip) %> <%= answer.strip %>
+                <% end %>
+              </div>
 
-          <div class="pull-left">
-            <small class="">Confiança da previsão: </small>
-            <%= radio_button_tag('rating'+@question.id.to_s, 1) %>
-            <%= radio_button_tag('rating'+@question.id.to_s, 2) %>
-            <%= radio_button_tag('rating'+@question.id.to_s, 3) %>
-            <%= radio_button_tag('rating'+@question.id.to_s, 4) %>
-            <%= radio_button_tag('rating'+@question.id.to_s, 5) %>
-          </div>
+              <%= text_area_tag('comment'+@question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
 
-          <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
-          <span id="new_forecast_response_<%= @question.id %>">
-           </br><%= flash[:answer][:message] if !flash[:answer].nil? %>
-          </span>
+              <div class="pull-left">
+                <small class="">Confiança da previsão: </small>
+                <%= radio_button_tag('rating'+@question.id.to_s, 1) %>
+                <%= radio_button_tag('rating'+@question.id.to_s, 2) %>
+                <%= radio_button_tag('rating'+@question.id.to_s, 3) %>
+                <%= radio_button_tag('rating'+@question.id.to_s, 4) %>
+                <%= radio_button_tag('rating'+@question.id.to_s, 5) %>
+              </div>
+
+              <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
+              <span id="new_forecast_response_<%= @question.id %>">
+               </br><%= flash[:answer][:message] if !flash[:answer].nil? %>
+              </span>
+
+          <% else %>
+              A previsão correta foi: <%= @question.correct_answer %> 
+          <% end %>
       <% end %>
     </div>
 

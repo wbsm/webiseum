@@ -11,7 +11,9 @@
         </a>
       </div>
       <div class="col-xs-7">
-        <label style="margin-left: 5px;"><%= question.title %></label>
+        <a href="<%= social_question_path(question) %>" class="">
+          <label style="margin-left: 5px;"><%= question.title %></label>
+        </a>
         <div id="create_forecast_<%= question.id %>">
           <%= form_for Forecast.new, url: social_question_forecast_index_path(@forecast), remote: true do |f| %>
 
