@@ -4,6 +4,5 @@ class AddUserInfoToUser < ActiveRecord::Migration
     add_column :users, :middle_name, :string
     add_column :users, :last_name, :string
     add_column :users, :gender, :string
-    add_column :users, :image, :longblob
   end
 end

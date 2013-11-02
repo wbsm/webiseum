@@ -4,6 +4,15 @@ module ForecastMatch
   module ClassMethods
 
     def match(forecast_web)
+      answer = Hash.new
+
+      isExpired = Question.where(id: forecast_web[:question_id]).not_expired.count == 0 ? true : false
+      if isExpired
+        answer[:has_errors] = true
+        answer[:message] = "Não é mais possível prever essa questão. Acesse-a para ver as previsões já feitas."
+        return answer
+      end
+
 
       forecast_db = Forecast.find_or_initialize_by(:user_id => forecast_web[:user_id], :question_id => forecast_web[:question_id])
       unless forecast_db

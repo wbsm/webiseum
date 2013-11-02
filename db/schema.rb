@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20131014020505) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20131014020505) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["forecast_id"], name: "index_comments_on_forecast_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["forecast_id"], name: "index_comments_on_forecast_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "forecasts", force: true do |t|
     t.integer  "rating"
@@ -72,7 +75,7 @@ ActiveRecord::Schema.define(version: 20131014020505) do
     t.datetime "updated_at"
   end
 
-  add_index "ranks", ["user_id"], name: "index_ranks_on_user_id"
+  add_index "ranks", ["user_id"], name: "index_ranks_on_user_id", using: :btree
 
   create_table "tag_ranks", force: true do |t|
     t.integer  "score",      default: 0
@@ -82,8 +85,8 @@ ActiveRecord::Schema.define(version: 20131014020505) do
     t.datetime "updated_at"
   end
 
-  add_index "tag_ranks", ["tag_id"], name: "index_tag_ranks_on_tag_id"
-  add_index "tag_ranks", ["user_id"], name: "index_tag_ranks_on_user_id"
+  add_index "tag_ranks", ["tag_id"], name: "index_tag_ranks_on_tag_id", using: :btree
+  add_index "tag_ranks", ["user_id"], name: "index_tag_ranks_on_user_id", using: :btree
 
   create_table "tags", force: true do |t|
     t.string   "name"
@@ -100,7 +103,6 @@ ActiveRecord::Schema.define(version: 20131014020505) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
-    t.binary   "image"
     t.string   "password_digest"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
@@ -110,6 +112,6 @@ ActiveRecord::Schema.define(version: 20131014020505) do
     t.string   "time_zone",           default: "America/Sao_Paulo"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

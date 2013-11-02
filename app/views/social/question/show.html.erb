@@ -9,7 +9,7 @@
 
           <%= hidden_field_tag(:question_id, @question.id) %>
           
-          <% if @question.correct_answer.nil? || @question.correct_answer.empty? %>
+          <% if @question.not_expired %>
 
               <div>
                 <% @question.answers.split(";").each do |answer| %>
@@ -34,7 +34,11 @@
               </span>
 
           <% else %>
-              A previsão correta foi: <%= @question.correct_answer %> 
+              <% if @question.correct_answer.nil? || @question.correct_answer.empty? %>
+                  A previsão correta será publicada em instantes...
+              <% else %>
+                  A previsão correta foi: <%= @question.correct_answer %>
+              <% end %>
           <% end %>
       <% end %>
     </div>

@@ -7,10 +7,10 @@ class Social::FeedController < Social::SocialController
 
   def question
     if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-      @questions = Question.not_expired
+      @questions = Question.not_expired.not_ranked
       render 'social/feed/index'
     else
-      @questions = Question.not_expired
+      @questions = Question.not_expired.not_ranked
       render 'social/feed/index'
     end
   end
@@ -28,7 +28,7 @@ class Social::FeedController < Social::SocialController
 
   def tag
     if current_action == 'question'
-      @questions = Question.by_tag(params[:id]).not_expired
+      @questions = Question.by_tag(params[:id]).not_expired.not_ranked
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/index' and return
     elsif current_action == 'forecast'
