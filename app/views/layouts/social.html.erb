@@ -118,19 +118,21 @@
         <div class="col-md-2">
           <aside>
             <div class="aside-menu">
-              <h6>RANKING</h6>
-              <ul style="list-style-type: none; padding-left: 6px;">
+              <% if @rank.present? %>
+                  <h6>RANKING</h6>
+                  <ul style="list-style-type: none; padding-left: 6px;">
 
-                <% @rank.each_with_index do |rank, index| %>
+                    <% @rank.each_with_index do |rank, index| %>
 
-                    <li>
-                      <%= image_tag rank.user.image_type(:small), size: '20' %>
-                      <strong><small><%= index+1 %>. </small></strong>
-                      <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
-                    </li>
+                        <li>
+                          <%= image_tag rank.user.image_type(:small), size: '20' %>
+                          <strong><small><%= index+1 %>. </small></strong>
+                          <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                        </li>
 
-                <% end  %>
-              </ul>
+                    <% end  %>
+                  </ul>
+              <% end %>
             </div>
           </aside>
         </div>

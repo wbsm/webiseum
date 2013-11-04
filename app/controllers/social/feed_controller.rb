@@ -1,6 +1,6 @@
 class Social::FeedController < Social::SocialController
 	before_action :store_action, only: [:question, :forecast]
-  before_action :populate_common_resources
+  before_action :populate_common_resources, except: [:tag]
 
   def index
     @questions = Question.not_expired
