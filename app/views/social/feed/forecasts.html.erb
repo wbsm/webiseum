@@ -13,7 +13,16 @@
               <a href="<%= social_question_path(f.question) %>" class="">
                 <%= f.question.title %>
               </a>
-              <p>Confiança: <%= f.rating %></p> 
+
+              <% if !f.answer_correct.nil? %>
+                <% if f.answer_correct %>
+                    <p>Acertou a previsão!</p>
+                <% else  %>
+                    <p>Errou a previsão!</p>
+                <% end %>
+              <% end %>
+
+              <p>Confiança: <%= f.rating %></p>
               <p>Comentário: <%= f.comment %></p>
             </p>
           </blockquote>

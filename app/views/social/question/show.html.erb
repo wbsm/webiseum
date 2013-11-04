@@ -57,8 +57,17 @@
             <p>
               <%= image_tag f.user.image_type(:thumb), size: '46' %>
               <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong>
-            <p>Confiança: <%= f.rating %></p>
-            <p>Comentário: <%= f.comment %></p>
+
+              <% if !f.answer_correct.nil? %>
+                  <% if f.answer_correct %>
+                    <p>Acertou a previsão!</p>
+                <% else  %>
+                    <p>Errou a previsão!</p>
+                <% end %>
+              <% end %>
+
+              <p>Confiança: <%= f.rating %></p>
+              <p>Comentário: <%= f.comment %></p>
             </p>
           </blockquote>
         </div>

@@ -32,6 +32,9 @@ class Admin::RankingGeneratorController < Admin::AdminController
         end
 
         rank.save
+
+        f.answer_correct = is_correct
+        f.save
       end
 
       q.rank_update = true
