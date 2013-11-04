@@ -16,6 +16,8 @@
 class User < OmniAuth::Identity::Models::ActiveRecord
   before_save :build_name
 
+  scope :by_name, -> (user_name) { where('lower(name) like ?', "%#{user_name.downcase}%") }
+
   # Omniauth Identity
   auth_key :email
 

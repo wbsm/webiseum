@@ -3,7 +3,7 @@ module FeedHelper
   def tag_claud(tags)
     return unless tags.present?
 
-    rel_order = [4,8,6,2,10,9,2,6,8,4];
+    rel_order = [4,8,6,2,10,9,2,6,8,4]
 
     content = '<div id="tag-cloud"> '
 

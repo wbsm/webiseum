@@ -26,7 +26,7 @@ Webiseum::Application.routes.draw do
     resources :question_forecast, only: [:create, :update]
 
     # refazer search
-    resources :search,            only: [:search] do
+    resources :search,            only: [:search, :show] do
       collection do
         get '/', to: :search
       end

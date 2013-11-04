@@ -1,5 +1,6 @@
 class Social::FeedController < Social::SocialController
 	before_action :store_action, only: [:question, :forecast]
+  before_action :populate_common_resources
 
   def index
     @questions = Question.not_expired
@@ -17,7 +18,7 @@ class Social::FeedController < Social::SocialController
 
   def forecast
     if params['id'].to_i != 0 && params['id'].to_i.is_a?(Numeric)
-      @forecasts = Forecast.by_user(params['id']).order_by_time
+      @forecasts = Forecast.by_user_id(params['id']).order_by_time
       #render 'social/feed/user_forecasts'
     else
       @forecasts = Forecast.order_by_time
@@ -36,7 +37,7 @@ class Social::FeedController < Social::SocialController
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     elsif current_action == 'forecast_with_id'
-      @forecasts = Forecast.by_user(session['user_id']).by_tag(params[:id]).order_by_time
+      @forecasts = Forecast.by_user_id(session['user_id']).by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
     end
@@ -56,6 +57,11 @@ class Social::FeedController < Social::SocialController
       else
         session['webiseum']['action'] = params['action'].to_s
       end
+    end
+
+    def populate_common_resources
+      @rank = Rank.order('score desc').limit(10)
+      @tags = Tag.all
     end
 
 end

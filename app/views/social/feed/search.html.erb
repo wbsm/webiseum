@@ -1,0 +1,20 @@
+<label></label>
+<hr>
+
+<% @users.try(:each) {|u| %>
+
+    <article>
+      <div class="row">
+        <div class="col-xs-12">
+          <blockquote>
+            <p>
+              <%= image_tag u.image_type(:thumb), size: '46' %>
+              <a href="<%= social_search_path(u) %>" class="">
+                <%= u.name %>
+              </a>
+            </p>
+          </blockquote>
+        </div>
+      </div>
+    </article>
+<% } %>
