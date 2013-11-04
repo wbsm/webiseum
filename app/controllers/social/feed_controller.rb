@@ -1,7 +1,6 @@
 class Social::FeedController < Social::SocialController
-	before_action :store_action, only: [:question, :forecast];
-  before_action :populate_rank, except: [:tag];
-  before_action :populate_tags;
+	before_action :store_action, only: [:question, :forecast]
+  before_action :populate_rank, except: [:tag]
 
   def index
     @questions = Question.not_expired
@@ -60,11 +59,4 @@ class Social::FeedController < Social::SocialController
       end
     end
 
-    def populate_rank
-      @rank = Rank.order('score desc').limit(10)
-    end
-
-    def populate_tags
-      @tags = Tag.all
-    end
 end
