@@ -118,8 +118,8 @@
         <div class="col-md-2">
           <aside>
             <div class="aside-menu">
+              <h6>RANKING</h6>
               <% if @rank.present? %>
-                  <h6>RANKING</h6>
                   <ul style="list-style-type: none; padding-left: 6px;">
 
                     <% @rank.each_with_index do |rank, index| %>
@@ -132,6 +132,8 @@
 
                     <% end  %>
                   </ul>
+              <% else %>
+                Não existe rank para esta Tag.
               <% end %>
             </div>
           </aside>
