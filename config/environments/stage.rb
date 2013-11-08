@@ -19,7 +19,7 @@ Webiseum::Application.configure do
   ENV['GOOGLE_SECRET']    = 'jgkf5IXWJPJKbmTmrusKVWoc'
 
   # Paperclip avatar manager
-  Paperclip.options[:command_path] = '/usr/bin/'
+  Paperclip.options[:command_path] = '/usr/local/bin/'
 
   # Code is not reloaded between requests.
   config.cache_classes = false
