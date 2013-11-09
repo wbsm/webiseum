@@ -2,6 +2,7 @@
  * CSS imports
  * 
  *= require application
+ *= require_directory .
  *= require_self
  */
 body {

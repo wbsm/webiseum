@@ -5,7 +5,6 @@
  //= require twitter/bootstrap
  //= require jquery/jquery.tagcloud
  //= require jstz-timezone/jstz-1.0.4.min
- //= require_tree .
 */
 
 var timeZone = jstz.determine();
