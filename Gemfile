@@ -21,7 +21,6 @@ gem 'newrelic_rpm'
 gem 'rails_12factor'
 gem "pg"
 
-
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -37,5 +36,3 @@ gem "paperclip", "~> 3.0"
 
 # tag cloug - JQCloud
 gem "jqcloud-rails"
-
-gem "font-awesome-rails"
