@@ -36,6 +36,8 @@ Webiseum::Application.configure do
 
   config.assets.digest = true
 
+  config.assets.initialize_on_precompile = false
+
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
