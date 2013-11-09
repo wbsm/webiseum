@@ -24,13 +24,10 @@ module Webiseum
     # Precompile additional assets (application.js,
     # application.css, and all non-JS/CSS are already added)
     config.assets.precompile += [
-        'fontawesome-webfont.ttf',
-        'fontawesome-webfont.eot',
-        'fontawesome-webfont.svg',
-        'fontawesome-webfont.woff',
         'webiseum.js',
         'webiseum.css'
     ]
+    config.assets.paths << Rails.root.join("app", "assets", "fonts")
     #%w( webiseum.js, webiseum.css )
   end
 end
