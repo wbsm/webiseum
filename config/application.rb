@@ -26,10 +26,10 @@ module Webiseum
     config.assets.precompile += [
         'webiseum.js',
         'webiseum.css',
-        'social.js',
-        'social.css',
-        'admin.js',
-        'admin.css'
+        'social/social.js',
+        'social/social.css',
+        'admin/admin.js',
+        'admin/admin.css'
     ]
     #config.assets.paths << Rails.root.join("app", "assets", "fonts")
     #%w( webiseum.js, webiseum.css )
