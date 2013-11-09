@@ -2,6 +2,6 @@
  * CSS imports
  *
  *= require twitter/bootstrap
- *= require font-awesome/font-awesome
  *= require_self
+ *= require font-awesome
  */

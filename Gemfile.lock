@@ -44,6 +44,8 @@ GEM
     execjs (2.0.2)
     faraday (0.8.8)
       multipart-post (~> 1.2.0)
+    font-awesome-rails (4.0.3.0)
+      railties (>= 3.2, < 5.0)
     hashie (2.0.5)
     hike (1.2.3)
     httpauth (0.2.0)
@@ -160,6 +162,7 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt-ruby (~> 3.0.0)
+  font-awesome-rails
   jbuilder (~> 1.2)
   jqcloud-rails
   jquery-rails
@@ -172,7 +175,6 @@ DEPENDENCIES
   pg
   rails (= 4.0.0)
   rails_12factor
-  rails_serve_static_assets
   sdoc
   therubyracer
   turbolinks

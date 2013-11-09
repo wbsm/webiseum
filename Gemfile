@@ -9,8 +9,6 @@ gem 'rails', '4.0.0'
 
 gem 'rails_12factor', group: [:production, :stage]
 
-gem 'rails_serve_static_assets'
-
 # User postgre
 gem "pg"
 
@@ -71,3 +69,5 @@ gem "paperclip", "~> 3.0"
 
 # tag cloug - JQCloud
 gem "jqcloud-rails"
+
+gem "font-awesome-rails"
