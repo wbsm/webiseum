@@ -17,10 +17,9 @@ end
 # WEBISEUM
 
 # Prod gems
-group :production do
   gem 'rails_12factor'
   gem "pg"
-end
+
 
 # To use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.0'
