@@ -22,27 +22,26 @@ Webiseum::Application.configure do
   #Paperclip.options[:command_path] = '/usr/local/bin/'
   Paperclip.options[:command_path] = '/usr/bin/'
 
-  # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.cache_classes = false
 
-  # Eager load code on boot. This eager loads most of Rails and
-  # your application in memory, allowing both thread web servers
-  # and those relying on copy on write to perform better.
-  # Rake tasks automatically ignore this option for performance.
-  config.eager_load = true
+  # Do not eager load code on boot.
+  config.eager_load = false
 
-  # Full error reports are disabled and caching is turned on.
-  config.consider_all_requests_local       = false
-  config.action_controller.perform_caching = true
+  # Show full error reports and disable caching.
+  config.consider_all_requests_local       = true
+  config.action_controller.perform_caching = false
 
-  # Set to :debug to see everything in the log.
-  config.log_level = :info
+  # Don't care if the mailer can't send.
+  config.action_mailer.raise_delivery_errors = false
 
-  config.i18n.fallbacks = true
+  # Print deprecation notices to the Rails logger.
+  config.active_support.deprecation = :log
 
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
+  # Raise an error on page load if there are pending migrations
+  config.active_record.migration_error = :page_load
 
-  # Use default logging formatter so that PID and timestamp are not suppressed.
-  config.log_formatter = ::Logger::Formatter.new
+  # Debug mode disables concatenation and preprocessing of assets.
+  # This option may cause significant delays in view rendering with a large
+  # number of complex assets.
+  config.assets.debug = true
 end
