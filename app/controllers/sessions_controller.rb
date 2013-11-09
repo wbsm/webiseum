@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  layout 'webiseum'
+
   skip_before_filter :verify_logged_user
 
   def new

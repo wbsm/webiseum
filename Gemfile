@@ -17,8 +17,8 @@ end
 # WEBISEUM
 
 # Prod gems
-  gem 'rails_12factor'
-  gem "pg"
+gem 'rails_12factor'
+gem "pg"
 
 
 # To use ActiveModel has_secure_password
