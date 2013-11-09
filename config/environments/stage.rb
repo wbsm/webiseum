@@ -34,10 +34,6 @@ Webiseum::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
-  config.serve_static_assets = true
-  config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect'
-  config.assets.compile = true
-
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
