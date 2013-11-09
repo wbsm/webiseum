@@ -38,7 +38,7 @@ Webiseum::Application.configure do
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.compress = true
-  config.assets.compile = false
+  config.assets.compile = true
   config.assets.digest = true
 
   # Set to :debug to see everything in the log.
