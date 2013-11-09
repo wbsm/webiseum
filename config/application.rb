@@ -23,6 +23,6 @@ module Webiseum
 
     # Precompile additional assets (application.js,
     # application.css, and all non-JS/CSS are already added)
-    config.assets.precompile += %w( webiseum.js )
+    config.assets.precompile += %w( webiseum.js, webiseum.css )
   end
 end
