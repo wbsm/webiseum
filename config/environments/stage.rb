@@ -34,6 +34,8 @@ Webiseum::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  config.assets.digest = true
+
   # Set to :debug to see everything in the log.
   config.log_level = :info
 
