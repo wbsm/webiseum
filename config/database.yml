@@ -7,7 +7,7 @@ development:
   username: wbsm_dev
   password: wbsm_dev
 
-stage:
+staging:
   adapter: postgresql
   database: wbsm_stg
   pool: 5
