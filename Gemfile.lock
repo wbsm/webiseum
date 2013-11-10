@@ -40,6 +40,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.3)
+    commonjs (0.2.6)
     erubis (2.7.0)
     execjs (2.0.2)
     faraday (0.8.8)
@@ -59,6 +60,11 @@ GEM
     json (1.8.1)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    less (2.3.2)
+      commonjs (~> 0.2.6)
+    less-rails (2.3.3)
+      actionpack (>= 3.1)
+      less (~> 2.3.1)
     libv8 (3.16.14.3)
     mail (2.5.4)
       mime-types (~> 1.16)
@@ -164,6 +170,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   jqcloud-rails
   jquery-rails
+  less-rails (>= 2.3.3)
   newrelic_rpm
   omniauth
   omniauth-facebook
