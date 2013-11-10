@@ -3,7 +3,9 @@ ruby '2.0.0'
 
 gem 'rails', '4.0.0'
 
-gem 'less-rails', '>= 2.3.3'
+gem 'less-rails', '>= 2.4.2'
+
+gem 'font-awesome-less'
 
 gem 'uglifier', '>= 1.3.0'
 
