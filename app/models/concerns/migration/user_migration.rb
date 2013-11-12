@@ -21,8 +21,12 @@ module Migration::UserMigration
         end
 
         rank = Rank.find_by_user_id(auth.user.id)
-        rank.score += rank_geral
-        rank.save
+        if rank.present?
+          rank.score += rank_geral
+          rank.save
+        else
+          rank = Rank.create(:user_id => user_id, :score => rank_geral)
+        end
 
         user_db = auth.user
         user_db.created_at = user['created_at']
