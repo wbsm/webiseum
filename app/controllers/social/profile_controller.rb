@@ -11,7 +11,7 @@ class Social::ProfileController < Social::SocialController
   def update
     @user = User.find_by_id(session[:user_id])
     if @user.present? && @user.update(user_params)
-      Authentication.create_webiseum_auth(@user) if password_updated
+      Authentication.create_identity_auth(@user) if password_updated
       redirect_to social_profile_path(@user), notice: 'Perfil atualizado com sucesso!'
     else
       render action: :edit

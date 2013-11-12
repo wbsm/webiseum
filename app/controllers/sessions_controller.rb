@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     auth_hash['time_zone'] = cookies["jstz_time_zone"]
 
     session.clear
-    auth = Authentication.find_or_create(nil, auth_hash)
+    auth = Authentication.find_or_create(auth_hash)
 
     session[:user_id] = auth.user.id.to_i
     redirect_to feed_path
