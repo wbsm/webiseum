@@ -35,13 +35,13 @@
             <div class="collapse navbar-collapse navbar-wbsm-collapse">
               <ul class="nav navbar-nav navbar-right">
                 <li>
-                  <a href="<%= social_profile_path(@logged_user) %>"><%= @logged_user.name %> <i class="icon-user icon-large"></i></a>
+                  <a href="<%= social_profile_path(@logged_user) %>"><%= @logged_user.name %> <i class="fa fa-user fa-lg"></i></a>
                 </li>
                 <li>
-                  <a href="<%= feed_path %>"><i class="icon-home icon-large"></i></a>
+                  <a href="<%= feed_path %>"><i class="fa fa-home fa-lg"></i></a>
                 </li>
                 <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-info-sign icon-large"></i></a>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-sign-out fa-lg"></i></a>
                   <ul class="dropdown-menu">
                     <li>
                       <a href="/logout">Sair</a>
@@ -78,13 +78,13 @@
                 <h6>PRINCIPAL</h6>
                 <ul style="list-style-type: none; padding-left: 6px;">
                   <li>
-                    <a href="<%= feed_questions_path %>"><i class="icon-info-sign"></i> Perguntas</a>
+                    <a href="<%= feed_questions_path %>"><i class="fa fa-comment-o"></i> Perguntas</a>
                   </li>
                   <li>
-                    <a href="<%= feed_forecasts_path(session['user_id']) %>"><i class="icon-bar-chart"></i> Minhas Previs&otilde;es</a>
+                    <a href="<%= feed_forecasts_path(session['user_id']) %>"><i class="fa fa-user"></i> Minhas Previs&otilde;es</a>
                   </li>
                   <li>
-                    <a href="<%= feed_forecasts_path(:all) %>"><i class="icon-group"></i> Todas Previs&otilde;es</a>
+                    <a href="<%= feed_forecasts_path(:all) %>"><i class="fa fa-group"></i> Todas Previs&otilde;es</a>
                   </li>
                 </ul>
               </div>
