@@ -13,11 +13,9 @@
 
             <% if @new_user && @new_user.errors.any? %>
                 <div class="error_messages">
-                  <ul>
                     <% @new_user.errors.full_messages.each do |msg| %>
-                        <li><%= msg %></li>
+                        <p><%= msg %></p>
                     <% end %>
-                  </ul>
                 </div>
             <% end %>
 
@@ -29,6 +27,7 @@
                     <%= text_field_tag :first_name, @new_user.try(:first_name), class: 'form-control input-sm', placeholder: 'Nome' %>
                   </div>
                   <div class="col-md-6 form-group input-group">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <%= text_field_tag :last_name, @new_user.try(:last_name), class: 'form-control input-sm', placeholder: 'Sobrenome' %>
                   </div>
                 </div>
