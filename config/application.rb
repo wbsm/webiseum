@@ -23,7 +23,6 @@ module Webiseum
 
     # Precompile additional assets (application.js,
     # application.css, and all non-JS/CSS are already added)
-    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
     config.assets.precompile += [
         'webiseum.js',
         'webiseum.css',
