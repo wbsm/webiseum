@@ -31,9 +31,10 @@ module Migration::UserMigration
 
         user_db.created_at = user['created_at']
         user_db.save
+
+        user_migrated = ActiveRecord::Base.connection.execute("update users_migration_temp set migrated = true where facebook_id = #{auth.uid}")
       end
 
-      user_migrated = ActiveRecord::Base.connection.execute("update users_migration_temp set migrated = true where facebook_id = #{auth.uid}")
     end
   end
 

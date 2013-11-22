@@ -4,3 +4,66 @@
  *= require_directory .
  *= require_self
  */
+
+.navbar-default {
+    background: white;
+}
+
+/* WEBISEUM */
+div#webiseum > .block-main-features {
+    background-image:url(https://s3-sa-east-1.amazonaws.com/wbsm-stg/main_features_1024.png);
+    margin-top: 50px;
+    height: 380px;
+}
+
+div#webiseum > .block-main-features .text-content {
+    margin-top: -50px;
+}
+
+div#webiseum > .block-social-logins {
+
+}
+
+div#webiseum > .block-features {
+    margin-top: 30px;
+}
+
+div#webiseum > .block-beta-release {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/* SIGNUP */
+div#signup {
+    padding-top: 20px;
+}
+
+div#signup .signup-form {
+    margin-top: 65px;
+    background: #F3F3F3;
+    padding: 20px;
+}
+
+div#signup .signup-form > i {
+    margin-bottom: 20px;
+}
+
+/* UNREGISTERED */
+div#unregistered {
+    padding-top: 20px;
+}
+
+div#unregistered .unregistered-form {
+    margin-top: 65px;
+    background: #F3F3F3;
+    padding: 20px;
+}
+
+div#unregistered .unregistered-form .mail {
+    margin-top: 20px;
+}
+
+
+
+
+

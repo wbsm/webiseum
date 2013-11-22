@@ -1,64 +1,93 @@
-<nav class="navbar navbar-static-top navbar-default" style="margin-bottom: 0px;" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse-mobile">
-        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand navbar-align-logo" href="#"><img src="http://webiseum.azurewebsites.net/content/images/logo.png" width="49"></a>
-    </div>
-    <div class="collapse navbar-collapse navbar-align-info navbar-collapse-mobile">
-      <div class="pull-right">
-        <ul class="nav navbar-nav">
-          <li><p class="navbar-text">Já possui cadastro?</p></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown">Login </a>
-            <ul class="dropdown-menu">
-              <li><a href="<%= unregistered_path %>">Form para login</a></li>
-              <li><a href="#">Redes sociais para login</a></li>
-            </ul>
-          </li>
-        </ul>
+<div id="webiseum">
+    <!-- NAV BAR -->
+    <div class="navbar navbar-fixed-top navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+          </button>
+          <a href="#" class="navbar-brand">Webiseum</a>
+        </div>
+        <div class="collapse navbar-collapse pull-right">
+          <ul class="nav navbar-nav">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown">Login | <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="/auth/facebook"><i class="fa fa-facebook"></i> facebook</a>
+                </li>
+                <li>
+                  <a href="/auth/google_oauth2"><i class="fa fa-google-plus"></i> google+</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="/unregistered"><i class="fa fa-keyboard-o"></i> webiseum</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container text-center">
-    <h2>Fa&ccedil;a previs&otilde;es e ganhe pr&ecirc;mios</h2>
-    <p>Interaja com amigos e saiba quem tem melhor desempenho</p><br>
-    <p>Conecte com sua rede social preferida</p>
-    <p>
-      <a href="/auth/facebook" class="btn btn-primary btn-lg" style="background-color: #3b5998; border: 0px;"><i class="fa fa-facebook fa-lg"> Facebook</i></a>
-      <a href="/auth/google_oauth2" class="btn btn-primary btn-lg" style="background-color: #cb2027; border: 0px;"><i class="fa fa-google-plus fa-lg"> Google+</i></a>
-    </p>
-    <h5>Ou conecte com seu <a href="<%= unregistered_path %>">e-mail pessoal</a></h5>
-  </div>
-</div>
-<div class="container">
-  <!-- Example row of columns -->
-  <div class="row">
-    <div class="col-lg-4 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
-      <h3>Social</h3>
-      <p class="text-center">Faça e compartilhe suas previsões. Confira os palpites de seus amigos!</p>
-      <p></p>
+
+    <!-- MAIN IMAGE -->
+    <div class="jumbotron block-main-features">
+      <div class="container text-center">
+        <div class="text-content">
+            <h2>Fa&ccedil;a previs&otilde;es sobre diversos assuntos </h2>
+            <h2>e ganhe pr&ecirc;mios</h2>
+            <p>Interaja com amigos e saiba quem tem melhor desempenho</p>
+        </div>
+      </div>
     </div>
-    <div class="col-lg-4 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
-      <h3>Diversos assuntos</h3>
-      <p class="text-center">Futebol, Televisão, Política... Jogue sobre seus temas favoritos.</p>
-      <p></p>
+
+    <div class="container text-center block-social-logins">
+      <div class="row">
+        <div class="col-md-12">
+          <p>Cadastre-se através de sua rede social favorita:</p>
+          <p>
+            <a href="/auth/facebook" class="btn btn-primary btn-lg" style="background-color: #3b5998; border: 0px;"><i class="fa fa-facebook icon-large"> facebook</i></a>
+            <a href="/auth/google_oauth2" class="btn btn-primary btn-lg" style="background-color: #cb2027; border: 0px;"><i class="fa fa-google-plus icon-large"> google+</i></a>
+          </p>
+          <h6>Ou com seu <a href="/signup">e-mail pessoal</a></h6>
+
+        </div>
+      </div>
+      <hr>
     </div>
-    <div class="col-lg-4 text-center">
-      <img src="https://app.divshot.com/img/placeholder-100x100.gif">
-      <h3>Ranking e prêmios</h3>
-      <p class="text-center">Você ganha pontos se acertar previsões, sobe nos rankings e pode ganhar prêmios!</p>
-      <p></p>
+
+    <div class="container text-center block-features">
+      <div class="row">
+        <div class="col-md-4">
+          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+          <p>Fa&ccedil;a e compartilhe suas previs&otilde;es. Confira os palpites de seus amigos!</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+          <p>Futebol, Televis&atilde;o, Pol&iacute;tica... Jogue sobre seus temas favoritos.</p>
+        </div>
+        <div class="col-md-4">
+          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+          <p>Voc&ecirc; ganha pontos se acertar previs&otilde;es, sobe nos rankings e pode ganhar pr&ecirc;mios!</p>
+        </div>
+      </div>
     </div>
-  </div>
-  <hr>
-  <footer>
-    <p>&copy; Company 2013</p>
-  </footer>
+
+    <!-- BETA RELEASE INFO -->
+    <div class="block-beta-release">
+      <p class="text-center"><i class="fa fa-spin fa-spinner fa-3x"></i></p>
+      <p class="text-center"><b>Estamos em constante aprimoramento para oferecer as melhores experi&ecirc;ncias para nossos usu&aacute;rios.</b></p>
+    </div>
+
+    <hr>
+
+    <!-- FOOTER -->
+    <footer class="block-footer">
+      <div class="container">
+        <p class="pull-left">&copy; Webiseum - 2013 |
+          <a href>Pol&iacute;tica de privacidade</a> | <a href>Termos de uso</a> </p>
+        <p class="pull-right"><a href="#">Voltar ao topo</a></p>
+      </div>
+    </footer>
+
 </div>
