@@ -36,8 +36,9 @@ Webiseum::Application.configure do
 
   config.assets.js_compressor = :uglifier
 
-  # Don't fallback to assets pipeline if a precompiled asset is missed
   config.assets.digest = true
+
+  config.assets.version = '1.1'
 
   # Set to :debug to see everything in the log.
   config.log_level = :info
