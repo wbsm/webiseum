@@ -1,10 +1,10 @@
 /*
  * CSS imports
  *
+ *= require application
  *= require_directory .
  *= require_self
  */
-
 .navbar-default {
     background: white;
 }
