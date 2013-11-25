@@ -51,7 +51,7 @@
                 <%= image_tag @logged_user.image_type(:thumb), class: 'media-object', size: '46' %>
               </a>
               <div class="media-body">
-                <h5 class="media-heading">Gabriel Prado</h5>
+                <h5 class="media-heading"><%= @logged_user.name %></h5>
                 <a href="<%= edit_social_profile_path(@logged_user) %>">Editar perfil</a>
               </div>
           </div>
