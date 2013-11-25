@@ -1,47 +1,53 @@
-<%= form_for @user, url: social_profile_path(@user), html: {:multipart => true, class: "nifty_form"} do |f| %>
+<%= form_for @user, url: social_profile_path(@user), html: {:multipart => true, class: "nifty_form form-horizontal"} do |f| %>
 
-	<fieldset>
-		<legend><%= form_title %></legend>
-		<% if @user.errors.any? %>
-			<div id="error_explanation">
-			    <h4>
-			    	O formulário possui os seguintes erros:
-			    </h4>
-			    <ul>
-					<% @user.errors.full_messages.each do |message|%>
-						<li><%= message %> </li> <% end %>
-				</ul>
-			</div>
-		<% end %>
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            O formulário possui os seguintes erros:
+          </h4>
+          <ul>
+            <% @user.errors.full_messages.each do |message|%>
+                <li><%= message %> </li> <% end %>
+          </ul>
+        </div>
+    <% end %>
 
+    <%= image_tag f.object.image_type(:thumb), class: 'media-object', size: '46' %>
+    <%= f.file_field :avatar %>
+    </br></br>
 
-        </br>
-      <div class="form-group ">
-        <%= image_tag f.object.image_type(:thumb), class: 'media-object', size: '46' %>
-        <%= f.file_field :avatar %>
+    <div class="control-group">
+        <%= f.label 'Nome', class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :first_name%>
+        </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Sobrenome', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :last_name%>
       </div>
-      	<div class="form-group ">
-			<%= f.label 'Nome' %> <br />
-			<%= f.text_field :first_name, :class => 'form-control'%>
-		</div>
-          <div class="form-group ">
-            <%= f.label 'Sobrenome' %> <br />
-            <%= f.text_field :last_name, :class => 'form-control'%>
-          </div>
-		<div class="form-group ">
-			<%= f.label :email %> <br />
-			<%= f.text_field :email, :class => 'form-control'%>
-		</div>
-      <div class="form-group ">
-        <%= f.label :password %> <br />
-        <%= f.password_field :password, :class => 'form-control'%>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :password, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password%>
       </div>
-      <div class="form-group ">
-        <%= f.label :password_confirmation %> <br />
-        <%= f.password_field :password_confirmation, :class => 'form-control'%>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :password_confirmation, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation%>
       </div>
-      <div class="actions">
-	      <%= f.submit :value => 'Salvar', :class => 'btn btn-primary' %>
-	  </div>
-	</fieldset>
+    </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => 'Salvar', :class => 'btn' %>
+    </div>
+  </div>
 <% end %>
+

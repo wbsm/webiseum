@@ -1,59 +1,95 @@
-<label>Questões</label>
-<hr>
+<div class="well well-small">
+  Perguntas
+</div>
 
 <% @questions.each do |question| %>
 
-  <article>
-    <div class="row">
-      <div class="col-xs-2">
-        <a href="<%= social_question_path(question) %>">
-          <%= image_tag question.image_type(:thumb), size: '64' %>
-        </a>
+    <div class="span8">
+
+      <!-- TITLE -->
+      <div class="row">
+        <div class="span8">
+          <h4><strong><a href="<%= social_question_path(question) %>"><%= question.title %></a></strong></h4>
+        </div>
       </div>
-      <div class="col-xs-7">
-        <a href="<%= social_question_path(question) %>" class="">
-          <label style="margin-left: 5px;"><%= question.title %></label>
-        </a>
-        <div id="create_forecast_<%= question.id %>">
-          <%= form_for Forecast.new, url: social_question_forecast_index_path(@forecast), remote: true do |f| %>
 
+      <!-- FORECAST -->
+      <div class="row">
+
+        <!-- IMAGE -->
+        <div class="span2">
+          <a href="<%= social_question_path(question) %>" class="thumbnail">
+            <%= image_tag question.image_type(:thumb), width: 160, height: 80 %>
+          </a>
+        </div>
+
+        <div id="create_forecast_<%= question.id %>" class="span6">
+            <%= form_for Forecast.new, url: social_question_forecast_index_path(@forecast), remote: true do |f| %>
               <%= hidden_field_tag(:question_id, question.id) %>
-              <div>
-                <% question.answers.split(";").each do |answer| %>
-                    <%= radio_button_tag('answer'+question.id.to_s, answer.strip) %> <%= answer.strip %>
-                <% end %>
+
+              <!-- CONTENT -->
+              <div class="row">
+                  <!-- ANSWERS -->
+                  <div class="span4">
+                    <% question.answers.split(";").each do |answer| %>
+                        <label class="radio inline">
+                            <%= radio_button_tag('answer'+question.id.to_s, answer.strip) %>
+                            <%= answer.strip %>
+                        </label>
+                    <% end %>
+                  </div>
+
+                  <!-- TRUST -->
+                  <div class="span2">
+                    <small class="muted">Confiança: </small>
+                    <p>
+                      <%= radio_button_tag('rating'+question.id.to_s, 1) %>
+                      <%= radio_button_tag('rating'+question.id.to_s, 2) %>
+                      <%= radio_button_tag('rating'+question.id.to_s, 3) %>
+                      <%= radio_button_tag('rating'+question.id.to_s, 4) %>
+                      <%= radio_button_tag('rating'+question.id.to_s, 5) %>
+                    </p>
+                  </div>
               </div>
 
-              <%= text_area_tag('comment'+question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
+              <!-- ACOES -->
+              <div class="row">
 
-              <div class="pull-left">
-                <small class="">Confiança da previsão: </small>
-                <%= radio_button_tag('rating'+question.id.to_s, 1) %>
-                <%= radio_button_tag('rating'+question.id.to_s, 2) %>
-                <%= radio_button_tag('rating'+question.id.to_s, 3) %>
-                <%= radio_button_tag('rating'+question.id.to_s, 4) %>
-                <%= radio_button_tag('rating'+question.id.to_s, 5) %>
+                <div class="span4">
+                    <%= text_area_tag('comment'+question.id.to_s, '', placeholder: "escreve um comentário...", rows: "2", class: "span4") %>
+                    <span id="create_forecast_response_<%= question.id %>"></span>
+                </div>
+                <div class="span2">
+                    <button type="submit" class="btn">Prever <i class="fa fa-eye"></i></button>
+                </div>
+
               </div>
-
-              <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
-              <span id="create_forecast_response_<%= question.id %>"></span>
             <% end %>
         </div>
 
       </div>
-      <div class="col-xs-3">
-        <div>
-          <% question.tags.each do |tag| %>
-              <span class="label label-primary"><%= tag.name %></span>
-          <% end %>
-        </div>
-        <small class="text-muted">Quem tamb&eacute;m previu:</small>
-        <div>
-          <img src="https://app.divshot.com/img/placeholder-64x64.gif" style="display: inline-block; margin-bottom: 4px;" width="36">
-          <img src="https://app.divshot.com/img/placeholder-64x64.gif" style="display: inline-block; margin-bottom: 4px;" width="36">
+
+      <!-- INFO -->
+      <div class="row">
+        <div class="span8">
+          <p></p>
+          <p>
+            <i class="fa fa-calendar"></i> Evento: <%= question.event_at %>
+            | <i class="fa fa-calendar"></i> Previsão até: <%= question.finish_at %>
+            | <i class="fa fa-comment"></i> <a href="#">3 Previsões</a>
+
+            <!-- TAGS -->
+            | <i class="fa fa-tags"></i> Tags :
+            <% question.tags.each do |tag| %>
+                <a href="<% feed_tags_path(tag.name.downcase) %>"><span class="label label-info"><%= tag.name %></span></a>
+            <% end %>
+          </p>
+          <hr>
         </div>
       </div>
+
     </div>
-    <hr>
-  </article>
+
 <% end %>
+
+

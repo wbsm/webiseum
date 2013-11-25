@@ -1,38 +1,41 @@
-<div class="pull-left">
-  <p id="notice"><%= notice %></p>
+<div>
+  <div class="row">
+    <div class="span6">
+
+      <div class="">
+        <p id="notice"><%= notice %></p>
+      </div>
+
+      <%= image_tag @user.image_type(:thumb), class: 'media-object', size: '46', title: @user.name %>
+
+      <p>
+        <strong>Nome:</strong>
+        <%= @user.first_name%>
+      </p>
+      <p>
+        <strong>Sobrenome:</strong>
+        <%= @user.last_name %>
+      </p>
+      <p>
+        <strong>Email:</strong>
+        <%= @user.email %>
+      </p>
+      <p>
+        <strong>Rank score:</strong>
+        <%= @user.rank != nil ? @user.rank.score : 0 %>
+      </p>
+      <% @user.tag_ranks.each do |tag_rank| %>
+          <p>
+            <strong>[<%= tag_rank.tag.name %>] Rank score:</strong>
+            <%= tag_rank.score %>
+          </p>
+      <% end %>
+
+    </div>
+    <div class="span1">
+      <div class="pull-right">
+        <%= button_to "Editar", { :action => "edit" }, :class => "btn", :method => :get %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="pull-right">
-  <%= button_to "Editar", { :action => "edit" }, :class => "btn btn-primary", :method => :get %>
-</div>
-<div class="clearfix"></div>
-
-
-<%= image_tag @user.image_type(:thumb), class: 'media-object', size: '46' %>
-</br>
-<p>
-  <strong>Nome exibição:</strong>
-  <%= @user.name%>
-</p>
-<p>
-  <strong>Nome:</strong>
-  <%= @user.first_name%>
-</p>
-<p>
-  <strong>Sobrenome:</strong>
-  <%= @user.last_name %>
-</p>
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-<p>
-  <strong>Rank score:</strong>
-  <%= @user.rank != nil ? @user.rank.score : 0 %>
-</p>
-<% @user.tag_ranks.each do |tag_rank| %>
-  <p>
-    <strong>[<%= tag_rank.tag.name %>] Rank score:</strong>
-    <%= tag_rank.score %>
-  </p>
-<% end %>

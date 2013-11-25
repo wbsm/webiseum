@@ -1,32 +1,38 @@
-<label>Previsões</label>
-<hr>
+<div class="well well-small">
+  Previsões
+</div>
 
 <% @forecasts.try(:each) {|f| %>
 
-    <article>
-      <div class="row">
-        <div class="col-xs-12">
-          <blockquote>
-            <p>
-              <%= image_tag f.user.image_type(:thumb), size: '46' %>
-              <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
-              <a href="<%= social_question_path(f.question) %>" class="">
-                <%= f.question.title %>
-              </a>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <%= image_tag f.user.image_type(:thumb), class: 'media-object img-circle', size: '46' %>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading">
+          <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
+        </h5>
+        <a href="<%= social_question_path(f.question) %>" class="">
+          <%= f.question.title %>
+        </a>
 
-              <% if !f.answer_correct.nil? %>
-                <% if f.answer_correct %>
-                    <p>Acertou a previsão!</p>
-                <% else  %>
-                    <p>Errou a previsão!</p>
-                <% end %>
-              <% end %>
+        <% if f.question.rank_update %>
+            <% if f.answer_correct %>
+                <p>Acertou a previsão!</p>
+            <% else  %>
+                <p>Errou a previsão!</p>
+            <% end %>
+        <% end %>
 
-              <p>Confiança: <%= f.rating %></p>
-              <p>Comentário: <%= f.comment %></p>
-            </p>
-          </blockquote>
+        <div>
+            <p>Confiança: <%= f.rating %></p>
+            <p>Comentário: <%= f.comment %></p>
         </div>
       </div>
-    </article>
+      <hr>
+    </div>
+
 <% } %>
+
+
+

@@ -1,80 +1,88 @@
-<div id="webiseum">
-    <!-- NAV BAR -->
-    <div class="navbar navbar-fixed-top navbar-default">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
           </button>
-          <a href="#" class="navbar-brand">Webiseum</a>
-        </div>
-        <div class="collapse navbar-collapse pull-right">
-          <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown">Login | <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li>
-                  <a href="/auth/facebook"><i class="fa fa-facebook"></i> facebook</a>
-                </li>
-                <li>
-                  <a href="/auth/google_oauth2"><i class="fa fa-google-plus"></i> google+</a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="/unregistered"><i class="fa fa-keyboard-o"></i> webiseum</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- MAIN IMAGE -->
-    <div class="jumbotron block-main-features">
-      <div class="container text-center">
-        <div class="text-content">
-            <h2>Fa&ccedil;a previs&otilde;es sobre diversos assuntos </h2>
-            <h2>e ganhe pr&ecirc;mios</h2>
-            <p>Interaja com amigos e saiba quem tem melhor desempenho</p>
+          <a href="<% root_path %>" class="brand">Webiseum</a>
+          <div class="nav-collapse collapse ">
+            <ul class="nav pull-right">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">login | <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="/auth/facebook"><i class="fa fa-facebook"></i> facebook</a>
+                  </li>
+                  <li>
+                    <a href="/auth/google_oauth2"><i class="fa fa-google-plus"></i> google+</a>
+                  </li>
+                  <li class="divider"></li>
+                  <li>
+                    <a href="/unregistered"><i class="fa fa-keyboard-o"></i> webiseum</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div><!--/.nav-collapse -->
         </div>
       </div>
     </div>
 
-    <div class="container text-center block-social-logins">
+    <!-- Main hero unit for a primary marketing message or call to action -->
+    <div class="marketing">
+      <div class="marketing-text">
+          <h2>Fa&ccedil;a previs&otilde;es sobre diversos assuntos </h2>
+          <h2>e ganhe pr&ecirc;mios</h2>
+          <p>Interaja com amigos e saiba quem tem melhor desempenho</p>
+      </div>
+    </div>
+
+    <div class="container text-center social-login">
       <div class="row">
-        <div class="col-md-12">
-          <p>Cadastre-se através de sua rede social favorita:</p>
+        <div class="span12">
+          <h4>Cadastre-se através de sua rede social favorita:</h4>
           <p>
-            <a href="/auth/facebook" class="btn btn-primary btn-lg" style="background-color: #3b5998; border: 0px;"><i class="fa fa-facebook icon-large"> facebook</i></a>
-            <a href="/auth/google_oauth2" class="btn btn-primary btn-lg" style="background-color: #cb2027; border: 0px;"><i class="fa fa-google-plus icon-large"> google+</i></a>
+            <a href="/auth/facebook" class="btn btn-link btn-large facebook"><i class="fa fa-facebook"> facebook</i></a>
+            <a href="/auth/google_oauth2" class="btn btn-link btn-large google"><i class="fa fa-google-plus"> google+</i></a>
           </p>
-          <h6>Ou com seu <a href="/signup">e-mail pessoal</a></h6>
+          <h5>Ou com seu <a href="/signup">e-mail pessoal</a></h5>
 
         </div>
       </div>
-      <hr>
     </div>
 
-    <div class="container text-center block-features">
+    <div class="container sub-marketing">
+
+      <!-- Three columns of text below the carousel -->
       <div class="row">
-        <div class="col-md-4">
-          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
-          <p>Fa&ccedil;a e compartilhe suas previs&otilde;es. Confira os palpites de seus amigos!</p>
-        </div>
-        <div class="col-md-4">
-          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
-          <p>Futebol, Televis&atilde;o, Pol&iacute;tica... Jogue sobre seus temas favoritos.</p>
-        </div>
-        <div class="col-md-4">
-          <img src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
-          <p>Voc&ecirc; ganha pontos se acertar previs&otilde;es, sobe nos rankings e pode ganhar pr&ecirc;mios!</p>
-        </div>
-      </div>
+        <div class="span4">
+          <div class="well">
+            <img class="img-circle img-responsive" src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+            <h3>Social</h3>
+            <p>Fa&ccedil;a e compartilhe suas previs&otilde;es. Confira os palpites de seus amigos!</p>
+          </div>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <div class="well">
+            <img class="img-circle img-responsive" src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+            <h3>Diversos assuntos</h3>
+            <p>Futebol, Televis&atilde;o, Pol&iacute;tica... Jogue sobre seus temas favoritos.</p>
+          </div>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <div class="well">
+            <img class="img-circle img-responsive" src="https://s3-sa-east-1.amazonaws.com/wbsm-stg/feature_03.png" width="148">
+            <h3>Ganhe prêmios</h3>
+            <p>Voc&ecirc; ganha pontos se acertar previs&otilde;es, sobe nos rankings e pode ganhar pr&ecirc;mios!</p>
+          </div>
+        </div><!-- /.span4 -->
+      </div><!-- /.row -->
+
     </div>
 
-    <!-- BETA RELEASE INFO -->
-    <div class="block-beta-release">
+    <div>
       <p class="text-center"><i class="fa fa-spin fa-spinner fa-3x"></i></p>
       <p class="text-center"><b>Estamos em constante aprimoramento para oferecer as melhores experi&ecirc;ncias para nossos usu&aacute;rios.</b></p>
     </div>
@@ -82,12 +90,10 @@
     <hr>
 
     <!-- FOOTER -->
-    <footer class="block-footer">
+    <footer>
       <div class="container">
         <p class="pull-left">&copy; Webiseum - 2013 |
-          <a href>Pol&iacute;tica de privacidade</a> | <a href>Termos de uso</a> </p>
+        <a href>Pol&iacute;tica de privacidade</a> | <a href>Termos de uso</a> </p>
         <p class="pull-right"><a href="#">Voltar ao topo</a></p>
       </div>
     </footer>
-
-</div>

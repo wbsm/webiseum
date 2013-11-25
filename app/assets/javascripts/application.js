@@ -2,7 +2,7 @@
  //= require turbolinks
  //= require jquery
  //= require jquery_ujs
- //= require twitter/bootstrap
+ //= require bootplus/bootstrap
  //= require jquery/jquery.tagcloud
  //= require jstz-timezone/jstz-1.0.4.min
 */

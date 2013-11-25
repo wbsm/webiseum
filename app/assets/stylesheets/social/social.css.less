@@ -1,0 +1,59 @@
+@import 'application.css.less';
+
+/*
+ * CSS imports
+ *
+ *= require_directory .
+ *= require_self
+ */
+
+body {
+  background-color: white;
+  padding-top: 60px;
+}
+
+.social {
+
+  .menu-tab {
+    margin-top: 20px;
+
+    ul {
+      list-style: none;
+
+      li {
+        margin-left: -15px;
+
+        &.menu-tab-title {
+          margin-top: 10px;
+          margin-left: -25px;
+          color: @graySemiLight;
+        }
+      }
+    }
+
+  }
+
+  .tags {
+    .tag-header {
+      color: @graySemiLight;
+      border-bottom: 1px solid @grayLighter;
+    }
+
+    .tag-content {
+      padding: 5px;
+      margin-top: -10px;
+    }
+
+  }
+
+  .rank {
+    .rank-header {
+      color: @graySemiLight;
+      border-bottom: 1px solid @grayLighter;
+    }
+
+    .rank-content {
+      padding: 5px;
+    }
+  }
+}

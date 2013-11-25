@@ -1,9 +1,6 @@
-/*
- * CSS imports webse
- *
- *= require_directory .
- *= require_self
- */
+
+
+
 .navbar-default {
     background: white;
 }

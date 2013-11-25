@@ -1,76 +1,102 @@
-<div class="media">
-  <a class="pull-left">
-    <%= image_tag @question.image_type(:thumb), size: '96', class: 'media-object' %>
-  </a>
-  <div class="media-body" style="padding-left: 5px;">
-    <h4 class="media-heading"><%= @question.title %></h4>
-    <div id="new_forecast_<%= @question.id %>">
-      <%= form_for Forecast.new, url: social_question_index_path(@forecast) do |f| %>
+<div class="well well-small">
+  <div class="row">
+    <div class="span8">
+      <div class="row">
+        <div class="span2">
+          <a href="<%= social_question_path(@question) %>" class="thumbnail">
+            <%= image_tag @question.image_type(:thumb), width: 160, height: 80 %>
+          </a>
+        </div>
+        <div class="span6">
+          <h4><strong><%= @question.title %></a></strong></h4>
 
-          <%= hidden_field_tag(:question_id, @question.id) %>
-          
-          <% if @question.not_expired %>
+          <div id="new_forecast_<%= @question.id %>">
+            <%= form_for Forecast.new, url: social_question_index_path(@forecast) do |f| %>
 
-              <div>
-                <% @question.answers.split(";").each do |answer| %>
-                    <%= radio_button_tag('answer'+@question.id.to_s, answer.strip) %> <%= answer.strip %>
+                <%= hidden_field_tag(:question_id, @question.id) %>
+
+                <% if @question.not_expired %>
+
+                    <p class="muted"><% @question.description %></p>
+
+                    <div class="row">
+                      <!-- RESPOSTAS -->
+                      <div class="span4">
+                        <% @question.answers.split(";").each do |answer| %>
+                            <label class="radio inline">
+                              <%= radio_button_tag('answer'+@question.id.to_s, answer.strip) %>
+                              <%= answer.strip %>
+                            </label>
+                        <% end %>
+                      </div>
+
+                      <!-- CONFIANCA -->
+                      <div class="span2">
+                        <small class="muted">Confiança: </small>
+                        <p>
+                          <%= radio_button_tag('rating'+@question.id.to_s, 1) %>
+                          <%= radio_button_tag('rating'+@question.id.to_s, 2) %>
+                          <%= radio_button_tag('rating'+@question.id.to_s, 3) %>
+                          <%= radio_button_tag('rating'+@question.id.to_s, 4) %>
+                          <%= radio_button_tag('rating'+@question.id.to_s, 5) %>
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <!-- ACOES -->
+                      <div class="span4">
+                        <%= text_area_tag('comment'+@question.id.to_s, '', placeholder: "escreve um comentário...", rows: "2", class: "span4") %>
+                        <%= flash[:answer][:message] if !flash[:answer].nil? %>
+                      </div>
+                      <div class="span2">
+                        <button type="submit" class="btn">Prever </button>
+                      </div>
+                    </div>
+
+                <% else %>
+                    <% if @question.correct_answer.nil? || @question.correct_answer.empty? %>
+                        A previsão correta será publicada em instantes...
+                    <% else %>
+                        A previsão correta foi: <%= @question.correct_answer %>
+                    <% end %>
                 <% end %>
-              </div>
+            <% end %>
+          </div>
 
-              <%= text_area_tag('comment'+@question.id.to_s, '', placeholder: "Escreve um comentário para a previsão...", rows: "1", class: "form-control", style: "margin-top: 15px;") %>
-
-              <div class="pull-left">
-                <small class="">Confiança da previsão: </small>
-                <%= radio_button_tag('rating'+@question.id.to_s, 1) %>
-                <%= radio_button_tag('rating'+@question.id.to_s, 2) %>
-                <%= radio_button_tag('rating'+@question.id.to_s, 3) %>
-                <%= radio_button_tag('rating'+@question.id.to_s, 4) %>
-                <%= radio_button_tag('rating'+@question.id.to_s, 5) %>
-              </div>
-
-              <button type="submit" class="btn btn-link btn-sm pull-right">Prever <i class="icon-cloud-upload icon-large"></i></button>
-              <span id="new_forecast_response_<%= @question.id %>">
-               </br><%= flash[:answer][:message] if !flash[:answer].nil? %>
-              </span>
-
-          <% else %>
-              <% if @question.correct_answer.nil? || @question.correct_answer.empty? %>
-                  A previsão correta será publicada em instantes...
-              <% else %>
-                  A previsão correta foi: <%= @question.correct_answer %>
-              <% end %>
-          <% end %>
-      <% end %>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>
 
-<hr/>
-
 <% @question.forecasts.try(:each) {|f| %>
 
-    <article>
-      <div class="row">
-        <div class="col-xs-12">
-          <blockquote>
-            <p>
-              <%= image_tag f.user.image_type(:thumb), size: '46' %>
-              <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong>
+    <div class="well well-small media">
+      <a class="pull-left" href="#">
+        <%= image_tag f.user.image_type(:thumb), class: 'media-object', size: '46' %>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading">
+          <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
+        </h5>
+        <a href="<%= social_question_path(f.question) %>" class="">
+          <%= f.question.title %>
+        </a>
 
-              <% if !f.answer_correct.nil? %>
-                  <% if f.answer_correct %>
-                    <p>Acertou a previsão!</p>
-                <% else  %>
-                    <p>Errou a previsão!</p>
-                <% end %>
-              <% end %>
+        <% if f.question.rank_update %>
+            <% if f.answer_correct %>
+                <p>Acertou a previsão!</p>
+            <% else  %>
+                <p>Errou a previsão!</p>
+            <% end %>
+        <% end %>
 
-              <p>Confiança: <%= f.rating %></p>
-              <p>Comentário: <%= f.comment %></p>
-            </p>
-          </blockquote>
+        <div>
+          <p>Confiança: <%= f.rating %></p>
+          <p>Comentário: <%= f.comment %></p>
         </div>
       </div>
-    </article>
+    </div>
+
 <% } %>
