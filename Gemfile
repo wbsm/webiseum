@@ -38,6 +38,7 @@ gem 'omniauth-google-oauth2'
 
 # Paperclip - avatar manager
 gem "paperclip", "~> 3.0"
+gem 'aws-sdk'
 
 # tag cloug - JQCloud
 gem 'jqcloud-rails'
