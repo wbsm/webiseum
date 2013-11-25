@@ -50,4 +50,14 @@ Webiseum::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_protocol => 'http',
+      :s3_credentials => {
+          :bucket =>  'wbsm_stg',
+          :access_key_id => 'AKIAJSDRCG75H3NVMN4A',
+          :secret_access_key => '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'
+      }
+  }
 end
