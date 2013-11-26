@@ -35,7 +35,7 @@ Webiseum::Application.configure do
   config.assets.version = '1.1'
 
   # Set to :debug to see everything in the log.
-#  config.log_level = :info
+  config.log_level = :info
 
   config.i18n.fallbacks = true
 
