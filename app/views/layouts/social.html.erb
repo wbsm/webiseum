@@ -113,9 +113,11 @@
               <div class="rank-content">
                 <% if @rank.present? %>
                     <% @rank.each_with_index do |rank, index| %>
-                      <%= image_tag rank.user.image_type(:small), size: '20' %>
-                      <strong><small><%= index+1 %>. </small></strong>
-                      <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                      <% if @rank.user.present? %>
+                        <%= image_tag rank.user.image_type(:small), size: '20' %>
+                        <strong><small><%= index+1 %>. </small></strong>
+                        <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                      <% end %>
                     <% end  %>
                 <% else %>
                   Não existe rank para esta Tag.
@@ -124,8 +126,7 @@
           </div>
 
         </aside>
-      </div><!--/row-->
-
+      </div>
       <hr>
 
       <footer>
@@ -136,6 +137,6 @@
         </div>
       </footer>
 
-    </div><!-- container -->
+    </div>
 </body>
 </html>
