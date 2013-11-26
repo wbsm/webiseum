@@ -44,4 +44,4 @@ gem 'aws-sdk'
 gem 'jqcloud-rails'
 
 # HEROKU
-gem 'appsignal'
+#gem 'appsignal'
