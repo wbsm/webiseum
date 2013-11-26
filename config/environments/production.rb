@@ -49,7 +49,7 @@ Webiseum::Application.configure do
       :storage => :s3,
       :s3_protocol => 'http',
       :s3_credentials => {
-          :bucket =>  'wbsm',
+          :bucket =>  'wbsm_prod',
           :access_key_id => 'AKIAJSDRCG75H3NVMN4A',
           :secret_access_key => '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',
           :s3_host_name => 's3-us-west-2.amazonaws.com'
