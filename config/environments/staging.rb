@@ -6,12 +6,6 @@ Webiseum::Application.configure do
   ENV['FACEBOOK_KEY']     = '1375648122671695'
   ENV['FACEBOOK_SECRET']  = '6ce81bc54045df0530330400f7c48bf5'
 
-  # Twitter auth params
-  # App name: wbsm-stage-env
-  # Description: wbsm-stage
-  ENV['CONSUMER_KEY']     = 'dwOcfIQZFEBcRR2PJrA'
-  ENV['CONSUMER_SECRET']  = 'fkPX3kchlKazHZpDPRXhwNBxIkoPWVHCGggPQlnjAWw'
-
   # Google+ auth params
   # App name: wbsm-development-env
   # Description: wbsm-development
