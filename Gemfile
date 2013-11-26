@@ -45,5 +45,3 @@ gem 'jqcloud-rails'
 
 
 # HEROKU
-
-#gem 'appsignal'
