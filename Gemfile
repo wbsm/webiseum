@@ -42,3 +42,8 @@ gem 'aws-sdk'
 
 # tag cloug - JQCloud
 gem 'jqcloud-rails'
+
+
+# HEROKU
+
+gem 'appsignal'
