@@ -25,6 +25,10 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    appsignal (0.6.7)
+      json
+      rails (>= 3.0)
+      rake
     arel (4.0.1)
     atomic (1.1.14)
     aws-sdk (1.28.1)
@@ -177,6 +181,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  appsignal
   aws-sdk
   bcrypt-ruby (~> 3.0.0)
   bootplus-rails
