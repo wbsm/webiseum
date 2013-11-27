@@ -112,7 +112,7 @@
               <div class="rank-content">
                 <% if @rank.present? %>
                     <% @rank.each_with_index do |rank, index| %>
-                      <% if @rank.user.present? %>
+                      <% if rank.user.present? %>
                         <%= image_tag rank.user.image_type(:small), size: '20' %>
                         <strong><small><%= index+1 %>. </small></strong>
                         <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
