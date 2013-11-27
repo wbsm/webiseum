@@ -24,7 +24,7 @@ class Question < ActiveRecord::Base
   #scope :not_forecasted, -> (user_id) { joins('INNER JOIN forecasts ON forecasts.question_id != questions.id').where('forecasts.user_id == ?', user_id) }
 
   # Paperclip
-  has_attached_file :avatar, :styles => { :thumb => "64x64#" }
+  has_attached_file :avatar, :styles => { :thumb => "160x80#", :small => "80x40#" }
 
   # validations
 	validates_presence_of :title, :answers, :publish_at, :event_at, :finish_at

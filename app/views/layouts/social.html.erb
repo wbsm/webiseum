@@ -111,13 +111,17 @@
               <p class="rank-header">Ranking <i class="fa fa-trophy pull-right"></i></p>
               <div class="rank-content">
                 <% if @rank.present? %>
+                    <ul>
                     <% @rank.each_with_index do |rank, index| %>
                       <% if rank.user.present? %>
-                        <%= image_tag rank.user.image_type(:small), size: '20' %>
-                        <strong><small><%= index+1 %>. </small></strong>
-                        <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                        <li>
+                            <%= image_tag rank.user.image_type(:small), size: '20' %>
+                            <strong><small><%= index+1 %>. </small></strong>
+                            <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                        </li>
                       <% end %>
                     <% end  %>
+                    </ul>
                 <% else %>
                   Não existe rank para esta Tag.
                 <% end %>
