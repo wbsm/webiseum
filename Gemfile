@@ -45,3 +45,4 @@ gem 'jqcloud-rails'
 
 # HEROKU
 gem 'appsignal'
+gem 'oboe-heroku'
