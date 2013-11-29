@@ -28,11 +28,7 @@ class Social::FeedController < Social::SocialController
   end
 
   def tag
-    if current_action == 'question'
-      @questions = Question.by_tag(params[:id]).not_expired.not_ranked
-      @rank = TagRank.by_tag(params[:id])
-      render 'social/feed/index' and return
-    elsif current_action == 'forecast'
+    if current_action == 'forecast'
       @forecasts = Forecast.by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
@@ -40,6 +36,10 @@ class Social::FeedController < Social::SocialController
       @forecasts = Forecast.by_user_id(session['user_id']).by_tag(params[:id]).order_by_time
       @rank = TagRank.by_tag(params[:id])
       render 'social/feed/forecasts' and return
+    else
+        @questions = Question.by_tag(params[:id]).not_expired.not_ranked
+        @rank = TagRank.by_tag(params[:id])
+        render 'social/feed/index' and return
     end
 
     redirect_to :action => :index

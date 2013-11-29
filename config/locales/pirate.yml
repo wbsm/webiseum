@@ -1,0 +1,5 @@
+# config/locales/pirate.yml
+pirate:
+  time:
+    formats:
+      short: "arrrround %H'ish"

@@ -74,8 +74,8 @@
         <div class="span8">
           <p></p>
           <p>
-            <i class="fa fa-calendar"></i> Evento: <%= question.event_at %>
-            | <i class="fa fa-calendar"></i> Previsão até: <%= question.finish_at %>
+            <i class="fa fa-calendar"></i> Previsão até: <%= question.finish_at.strftime("%d-%m-%Y %H:%M:%S") %>
+            | <i class="fa fa-calendar"></i> Evento: <%= question.event_at.strftime("%d-%m-%Y %H:%M:%S") %>
             | <i class="fa fa-comment"></i> <a href="#">3 Previsões</a>
 
             <!-- TAGS -->
