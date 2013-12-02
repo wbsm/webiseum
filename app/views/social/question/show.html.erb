@@ -78,12 +78,9 @@
       </a>
       <div class="media-body">
         <h5 class="media-heading">
-          <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
+          <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong>
         </h5>
-        <a href="<%= social_question_path(f.question) %>" class="">
-          <%= f.question.title %>
-        </a>
-
+        
         <% if f.question.rank_update %>
             <% if f.answer_correct %>
                 <p>Acertou a previsão!</p>
