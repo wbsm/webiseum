@@ -7,7 +7,7 @@ class Admin::QuestionsController < Admin::AdminController
   end
 
   def index
-    @questions = Question.all
+    @questions = Question.ordered
   end
 
   # GET /questions/1

@@ -17,6 +17,7 @@
 end
 =end
 class Question < ActiveRecord::Base
+  scope :ordered, -> { all.order('finish_at DESC') }
   scope :not_expired, -> { where('? between publish_at and event_at', Time.zone.now.to_s(:db)).order('finish_at ASC') }
   scope :not_ranked, -> { where('rank_update = ?', false).order('finish_at ASC') }
   scope :by_tag, -> (tag_name) { joins(:tags).where('lower(tags.name) = ?', tag_name.downcase) }
