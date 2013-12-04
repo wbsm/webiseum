@@ -76,8 +76,8 @@
           <p>
             <i class="fa fa-calendar"></i> Previsão até: <%= question.finish_at.strftime("%d-%m-%Y %H:%M:%S") %>
             | <i class="fa fa-calendar"></i> Evento: <%= question.event_at.strftime("%d-%m-%Y %H:%M:%S") %>
-            | <i class="fa fa-comment"></i> <a href="#">3 Previsões</a>
-
+            <!--| <i class="fa fa-comment"></i> <a href="<%= social_question_path(question) %>">3 Previsões</a> -->
+            
             <!-- TAGS -->
             | <i class="fa fa-tags"></i> Tags :
             <% question.tags.each do |tag| %>
