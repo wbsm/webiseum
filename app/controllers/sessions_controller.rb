@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
   layout 'webiseum'
 
-  skip_before_filter :verify_logged_user
-
   def new
     @new_user = env['omniauth.identity'] || User.new
     render "webiseum/signup"
@@ -29,7 +27,7 @@ class SessionsController < ApplicationController
   def failure
     render :text => "Sorry, but you didn't allow access to our app!"
     session.clear
-    redirect_to unregistered_path
+    render "webiseum/unregistered" and return
   end
 
 end
