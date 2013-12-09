@@ -24,9 +24,11 @@
             <% end %>
         <% end %>
 
-        <div>
-            <p>Comentário: <%= f.comment %></p>
-        </div>
+        <% if !f.comment.blank? %>
+            <div>
+                <p>Comentário: <%= f.comment %></p>
+            </div>
+        <% end %>
       </div>
       <hr>
     </div>
