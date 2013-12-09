@@ -25,10 +25,12 @@
         <%= @user.rank != nil ? @user.rank.score : 0 %>
       </p>
       <% @user.tag_ranks.each do |tag_rank| %>
-          <p>
-            <strong>[<%= tag_rank.tag.name %>] Rank score:</strong>
-            <%= tag_rank.score %>
-          </p>
+          <% if tag_rank.tag.present? %>
+              <p>
+                <strong>[<%= tag_rank.tag.name %>] Rank score:</strong>
+                <%= tag_rank.score %>
+              </p>
+          <% end %>
       <% end %>
 
     </div>
