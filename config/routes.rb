@@ -12,6 +12,7 @@ Webiseum::Application.routes.draw do
   # Auth paths
   match '/auth/failure', :to => 'sessions#failure', via: [:get]
   match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
+  get   '/auth/new/:provider', to: 'sessions#new_user', as: 'new_user'
 
   # Feed and Social paths
   get   '/feed', to: 'social/feed#index', as: 'feed'

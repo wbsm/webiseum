@@ -20,6 +20,8 @@
                 <%= form_tag "/auth/identity/callback" do %>
                     <p class="muted">Ou utilize seu e-mail pessoal</p>
 
+                    <%= flash[:login_error] if flash[:login_error].present? %>
+
                     <div class="row">
                         <div class="span6 input-prepend">
                             <span class="add-on"><i class="fa fa-globe"></i></span>

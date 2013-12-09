@@ -18,22 +18,22 @@ class User < OmniAuth::Identity::Models::ActiveRecord
 
   scope :by_name, -> (user_name) { where('lower(name) like ?', "%#{user_name.downcase}%") }
 
+  # validations
+  EMAIL_REGEXP = /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/
+
+  validates_presence_of :first_name, :last_name, :email#, :birthdate, :gender
+  validates_uniqueness_of :email
+  validates_format_of :email, with: EMAIL_REGEXP
+  validates_length_of :password, :minimum => 6
+
   # Omniauth Identity
   auth_key :email
 
+  # att
+  attr_accessor :is_new
+
   # Paperclip
   has_attached_file :avatar, :styles => { :thumb => "46x46#", :small => "20x20#" }
-
-  # validations
-  validates_presence_of :first_name, :last_name, :email#, :birthdate, :gender
-  validates_uniqueness_of :email
-
-=begin
-	validates_presence_of :name, :last_name, :email
-	validates_length_of :full_name, allow_blank: false
-	validates_uniqueness_of :email
-	validates_format_of :email, with: EMAIL_REGEXP
-=end
 
   def image_type(type)
     if avatar.present?

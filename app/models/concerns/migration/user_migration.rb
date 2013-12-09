@@ -9,7 +9,7 @@ module Migration::UserMigration
 
 
       # migrate user
-      user_migrated = ActiveRecord::Base.connection.execute("select * from users_migration_temp where facebook_id = #{auth.uid} and migrated = false")
+      user_migrated = ActiveRecord::Base.connection.execute("select * from users_migration_temp where facebook_id = #{auth.uid} and migrated = false limit 1")
 
       user_migrated.each do |user|
         user_db = auth.user

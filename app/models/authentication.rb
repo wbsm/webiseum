@@ -54,6 +54,8 @@ class Authentication < ActiveRecord::Base
         return auth if auth.provider == provider_name
       end
 
+      user.is_new = user.authentications.size == 0
+
       Authentication.create(:user => user, :provider => provider_name, :uid => provider_uid)
     end
 

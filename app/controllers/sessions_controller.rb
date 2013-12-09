@@ -6,6 +6,11 @@ class SessionsController < ApplicationController
     render "webiseum/signup"
   end
 
+  def new_user
+
+    redirect_to feed_path
+  end
+
   def create
     auth_hash = request.env['omniauth.auth']
     
@@ -16,6 +21,11 @@ class SessionsController < ApplicationController
     auth = Authentication.find_or_create(auth_hash)
 
     session[:user_id] = auth.user.id.to_i
+
+    if auth.user.is_new
+      redirect_to new_user_path and return
+    end
+
     redirect_to feed_path
   end
 
@@ -25,7 +35,7 @@ class SessionsController < ApplicationController
   end
 
   def failure
-    render :text => "Sorry, but you didn't allow access to our app!"
+    flash[:login_error] = "Usuário/Senha inválidos..."
     session.clear
     render "webiseum/unregistered" and return
   end
