@@ -20,7 +20,11 @@ class Authentication < ActiveRecord::Base
     auth = create_auth(user_db, auth_hash)
 
     # TODO [webiseum migration] : remover quando nao tiver mais suporte a migracao de usuarios.
-    Authentication.migrate(auth)
+    begin
+      Authentication.migrate(auth)
+    rescue
+      puts "UserMigration: #{a.to_json}"
+    end
 
     auth
 	end

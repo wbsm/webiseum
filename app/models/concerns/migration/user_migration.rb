@@ -12,7 +12,7 @@ module Migration::UserMigration
       user_migrated = ActiveRecord::Base.connection.execute("select * from users_migration_temp where facebook_id = #{auth.uid} and migrated = false LIMIT 1")
 
       user_migrated.each do |user|
-        raise ActiveRecord::Rollback, "UserMigration: auth.user not found" if auth.nil? || auth.user.nil? || auth.user.id.nil?
+        raise ActiveRecord::Rollback, "UserMigration: auth.user not found - auth #{auth.to_json}" if auth.nil? || auth.user.nil? || auth.user.id.nil?
 
         user_db = auth.user
         rank_geral = 0
