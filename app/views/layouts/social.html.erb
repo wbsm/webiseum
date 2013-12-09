@@ -118,7 +118,12 @@
                         <li>
                             <%= image_tag rank.user.image_type(:small), size: '20' %>
                             <strong><small><%= index+1 %>. </small></strong>
-                            <small><%= rank.user.name %> <strong><%= rank.score %> pts</strong></small>
+                            <small>
+                              <a href="<%= social_search_path(rank.user) %>" class="">
+                                <%= rank.user.name %>
+                              </a>
+                              <strong><%= rank.score %> pts</strong>
+                            </small>
                         </li>
                       <% end %>
                     <% end  %>

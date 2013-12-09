@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104012950) do
+ActiveRecord::Schema.define(version: 20131209193239) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20131104012950) do
 
   add_index "comments", ["forecast_id"], name: "index_comments_on_forecast_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "forecast_migration_temp", id: false, force: true do |t|
+    t.integer "facebook_id",    limit: 8
+    t.integer "rating"
+    t.string  "answer"
+    t.string  "question_title"
+    t.text    "comment"
+    t.integer "question_id"
+  end
 
   create_table "forecasts", force: true do |t|
     t.integer  "rating"
@@ -78,6 +87,12 @@ ActiveRecord::Schema.define(version: 20131104012950) do
 
   add_index "ranks", ["user_id"], name: "index_ranks_on_user_id", using: :btree
 
+  create_table "ranks_migration_temp", id: false, force: true do |t|
+    t.integer "score",                 default: 0
+    t.integer "facebook_id", limit: 8
+    t.string  "tag_name"
+  end
+
   create_table "tag_ranks", force: true do |t|
     t.integer  "score",      default: 0
     t.integer  "user_id"
@@ -100,7 +115,7 @@ ActiveRecord::Schema.define(version: 20131104012950) do
     t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "rank_score",          default: 0,                   null: false
+    t.integer  "rank_score",          default: 0,          null: false
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
@@ -110,9 +125,17 @@ ActiveRecord::Schema.define(version: 20131104012950) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.date     "birthday"
-    t.string   "time_zone",           default: "America/Sao_Paulo"
+    t.string   "time_zone",           default: "Brasilia"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+
+  create_table "users_migration_temp", id: false, force: true do |t|
+    t.integer   "id",          limit: 8,                               null: false
+    t.string    "name"
+    t.timestamp "created_at",            precision: 6
+    t.integer   "facebook_id", limit: 8
+    t.boolean   "migrated",                            default: false, null: false
+  end
 
 end
