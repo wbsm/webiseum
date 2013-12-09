@@ -9,9 +9,11 @@ module Migration::UserMigration
 
 
       # migrate user
-      user_migrated = ActiveRecord::Base.connection.execute("select * from users_migration_temp where facebook_id = #{auth.uid} and migrated = false limit 1")
+      user_migrated = ActiveRecord::Base.connection.execute("select * from users_migration_temp where facebook_id = #{auth.uid} and migrated = false LIMIT 1")
 
       user_migrated.each do |user|
+        raise ActiveRecord::Rollback, "UserMigration: auth.user not found" if auth.nil? || auth.user.nil? || auth.user.id.nil?
+
         user_db = auth.user
         rank_geral = 0
 
@@ -41,7 +43,6 @@ module Migration::UserMigration
         # migrate user forecasts
         forecast_migrate = ActiveRecord::Base.connection.execute("select * from forecast_migration_temp where facebook_id = #{user['facebook_id']}")
         forecast_migrate.each_with_index do |forecast, index|
-
           forecast_web = Hash.new
           forecast_web['user_id'] = user_db.id
           forecast_web['question_id'] = forecast_migrate.to_a[index]['question_id']
