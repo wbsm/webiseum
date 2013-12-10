@@ -23,7 +23,7 @@ class Authentication < ActiveRecord::Base
     begin
       Authentication.migrate(auth)
     rescue
-      puts "UserMigration: #{a.to_json}"
+      puts "UserMigration: #{auth.to_json}"
     end
 
     auth
