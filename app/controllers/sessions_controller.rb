@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def new_user_redirect
 
-    render new_user_redirect_path
+    render 'webiseum/new_user_redirect'
   end
 
   def create
