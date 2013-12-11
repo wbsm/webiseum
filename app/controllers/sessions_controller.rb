@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 
   def new_user_redirect
 
-
+    render new_user_redirect_path
   end
 
   def create
@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
     session[:user_id] = auth.user.id.to_i
 
     if auth.user.is_new
-      render "webiseum/new_user_redirect" and return
+      redirect_to new_user_redirect_path(auth_hash['provider']) and return
     end
 
     redirect_to feed_path
