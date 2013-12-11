@@ -22,8 +22,9 @@ class Authentication < ActiveRecord::Base
     # TODO [webiseum migration] : remover quando nao tiver mais suporte a migracao de usuarios.
     begin
       Authentication.migrate(auth)
-    rescue
+    rescue => e
       puts "UserMigration: #{auth.to_json}"
+      puts e.backtrace
     end
 
     auth
