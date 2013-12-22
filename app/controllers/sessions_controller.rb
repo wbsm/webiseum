@@ -13,7 +13,9 @@ class SessionsController < ApplicationController
 
   def create
     auth_hash = request.env['omniauth.auth']
-    
+
+    puts "###################### request.referrer #{request.referrer}"
+
     # time_zone do browser    
     auth_hash['time_zone'] = cookies["jstz_time_zone"]
 
