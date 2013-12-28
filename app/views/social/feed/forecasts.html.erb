@@ -4,7 +4,7 @@
 
 <% @forecasts.try(:each) {|f| %>
 
-    <%= if !f.question.nil? %>
+    <% if !f.question.nil? %>
     <div class="media">
       <a class="pull-left" href="#">
         <%= image_tag f.user.image_type(:thumb), class: 'media-object img-circle', size: '46' %>
