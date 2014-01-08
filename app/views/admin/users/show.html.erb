@@ -1,0 +1,31 @@
+<div class="pull-left">
+  <p id="notice"><%= notice %></p>
+</div>
+
+<div class="pull-right">
+  <%= button_to "Editar", { :action => "edit" }, :class => "btn btn-primary", :method => :get %>
+</div>
+<div class="clearfix"></div>
+
+<%= image_tag @logged_user.image_type(:thumb), class: 'media-object', size: '46' %>
+</br>
+<p>
+  <strong>Name:</strong>
+  <%= @logged_user.name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @logged_user.first_name %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @logged_user.last_name %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= @logged_user.email %>
+</p>
+<p>
+  <strong>Rank score:</strong>
+  <%= @logged_user.rank_score %>
+</p>

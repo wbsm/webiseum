@@ -1,0 +1,26 @@
+<div class="well well-small">
+  Minhas previsões
+</div>
+
+<% @forecasts.try(:each) {|f| %>
+
+    <div class="well well-small media">
+      <a class="pull-left" href="#">
+        <%= image_tag f.user.image_type(:thumb), class: 'media-object', size: '46' %>
+      </a>
+      <div class="media-body">
+        <h5 class="media-heading">
+          Gabriel Prado
+          <em> <%= f.user.name %></em> previu <strong><%= f.answer %></strong> para:
+        </h5>
+        <a href="#" class="">
+          <%= f.question.title %>
+        </a>
+        <p>Confiança: <%= f.rating %></p>
+        <p>Comentário: <%= f.comment %></p>
+      </div>
+    </div>
+
+<% } %>
+
+

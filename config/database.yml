@@ -1,0 +1,30 @@
+development:
+  adapter: postgresql
+  database: wbsm_dev
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: wbsm_dev
+  password: wbsm_dev
+
+staging:
+  adapter: postgresql
+  database: wbsm_stg
+  pool: 5
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  database: wbsm_test
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  database: wbsm_prod
+  pool: 5
+  timeout: 5000
+
+
+
+

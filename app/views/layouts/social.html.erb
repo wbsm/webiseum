@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<head>
+  <title>Webiseum</title>
+  <%= stylesheet_link_tag    "social/social", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "social/social", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= javascript_include_tag "google-analytics", "data-turbolinks-track" => true %>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <a href="<%= feed_path %>" class="brand">Webiseum</a>
+
+          <div class="nav-collapse collapse">
+
+            <ul class="nav">
+              <%= form_tag(social_search_index_path, method: "get", class: 'navbar-form' ) do %>
+                  <input type="text" name="by" class="span4" placeholder="buscar previsões de amigos...">
+              <% end %>
+            </ul>
+
+            <p class="navbar-text pull-right">
+              Conectado como <a href="<%= social_profile_path(@logged_user) %>" class="navbar-link"><%= @logged_user.name %></a>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <div class="container social">
+
+      <div class="row">
+
+        <!-- LEFT MENU -->
+        <aside class="span2">
+
+          <!-- USER PROFILE -->
+          <div class="media">
+              <a class="pull-left" href="#">
+                <%= image_tag @logged_user.image_type(:thumb), class: 'media-object', size: '46' %>
+              </a>
+              <div class="media-body">
+                <h5 class="media-heading"><%= @logged_user.name %></h5>
+                <a href="<%= edit_social_profile_path(@logged_user) %>">Editar perfil</a>
+              </div>
+          </div>
+
+          <!-- MENU -->
+          <div class="menu-tab">
+            <ul>
+              <li class="menu-tab-title">Feed</li>
+              <li>
+                <a href="<%= feed_questions_path %>"><i class="fa fa-comments"></i> Perguntas</a>
+              </li>
+              <li>
+                <a href="<%= feed_forecasts_path(session['user_id']) %>"><i class="fa fa-user"></i> Minhas Previs&otilde;es</a>
+              </li>
+              <li>
+                <a href="<%= feed_forecasts_path(:all) %>"><i class="fa fa-group"></i> Todas Previs&otilde;es</a>
+              </li>
+              <li class="menu-tab-title">Preferências</li>
+              <li>
+                <a href="<%= social_profile_path(@logged_user) %>"><i class="fa fa-gear"></i> Profile</a>
+              </li>
+              <li>
+                <a href="/logout"><i class="fa fa-sign-out"></i> Sair</a>
+              </li>
+            </ul>
+          </div><!--/. -->
+
+          <!-- TAGS -->
+          <div class="tags">
+
+            <script type="text/javascript">
+                $.fn.tagcloud.defaults = {
+                    size: {start: 6, end: 12, unit: 'pt'},
+                    color: {start: '#2F5', end: '#78A'}
+                };
+
+                $(function () {
+                    $('#tag-cloud a').tagcloud();
+                });
+            </script>
+
+            <p class="tag-header">Tags <i class="fa fa-tags pull-right"></i></p>
+            <%= tag_cloud(@tags) %>
+
+          </div>
+
+        </aside>
+
+        <div class="span8">
+          <%= yield %>
+        </div>
+
+        <!-- RIGHT MENU -->
+        <aside class="span2">
+        
+          <div class="rank">
+              <p class="rank-header">Ranking <i class="fa fa-trophy pull-right"></i></p>
+              <div class="rank-content">
+                <% if @rank.present? %>
+                    <ul>
+                    <% @rank.each_with_index do |rank, index| %>
+                      <% if rank.user.present? %>
+                        <li>
+                            <%= image_tag rank.user.image_type(:small), size: '20' %>
+                            <strong><small><%= index+1 %>. </small></strong>
+                            <small>
+                              <a href="<%= social_search_path(rank.user) %>" class="">
+                                <%= rank.user.name %>
+                              </a>
+                              <strong><%= rank.score %> pts</strong>
+                            </small>
+                        </li>
+                      <% end %>
+                    <% end  %>
+                    </ul>
+                <% else %>
+                  Não existe rank para esta Tag.
+                <% end %>
+              </div>
+          </div>
+          
+        </aside>
+      </div>
+      <hr>
+
+      <footer>
+        <div class="container">
+          <p class="pull-left">&copy; Webiseum - 2013 |
+            <a href>Pol&iacute;tica de privacidade</a> | <a href>Termos de uso</a> </p>
+          <p class="pull-right"><a href="#">Voltar ao topo</a></p>
+        </div>
+      </footer>
+
+    </div>
+    
+    <script type="text/javascript">
+var _urq = _urq || [];
+_urq.push(['initSite', '49fe4f91-7647-4bf2-b310-1ae61a92cc7f']);
+(function() {
+var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+})();
+</script>
+
+</body>
+</html>

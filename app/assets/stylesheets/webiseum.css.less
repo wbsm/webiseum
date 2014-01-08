@@ -1,0 +1,61 @@
+@import 'application.css.less';
+
+/*
+ * CSS imports webs
+ *
+ *= require_self
+ */
+
+@linkColor:                         @greenLight;
+
+body {
+  margin-top: 40px;
+}
+
+.marketing {
+  background-image:url(https://s3.amazonaws.com/wbsm_img/features_1277_468.png);
+  height: 468px;
+
+  .marketing-text {
+    padding-top: 10px;
+    text-align: center;
+  }
+}
+
+.marketing-text {
+  padding-top: 10px;
+  text-align: center;
+}
+
+.sub-marketing {
+
+  .span4 {
+    text-align: center;
+
+    p {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  }
+
+  h2 {
+    font-weight: normal;
+  }
+
+}
+
+.social-login {
+  a {
+    &.facebook {
+      background-color: #3b5998;
+      color: white;
+    }
+
+    &.google {
+      background-color: #cb2027;
+      color: white;
+    }
+
+
+  }
+}

@@ -1,0 +1,53 @@
+<%= form_for @user, url: social_profile_path(@user), html: {:multipart => true, class: "nifty_form form-horizontal"} do |f| %>
+
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+          <h4>
+            O formulário possui os seguintes erros:
+          </h4>
+          <ul>
+            <% @user.errors.full_messages.each do |message|%>
+                <li><%= message %> </li> <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <%= image_tag f.object.image_type(:thumb), class: 'media-object', size: '46' %>
+    <%= f.file_field :avatar %>
+    </br></br>
+
+    <div class="control-group">
+        <%= f.label 'Nome', class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_field :first_name%>
+        </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label 'Sobrenome', class: 'control-label' %>
+      <div class="controls">
+        <%= f.text_field :last_name%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :password, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password%>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <%= f.label :password_confirmation, class: 'control-label' %>
+      <div class="controls">
+        <%= f.password_field :password_confirmation%>
+      </div>
+    </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit :value => 'Salvar', :class => 'btn' %>
+    </div>
+  </div>
+<% end %>
+
