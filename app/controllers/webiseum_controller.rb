@@ -4,6 +4,7 @@ class WebiseumController < ApplicationController
   before_action :redirect_to_feed
 
   def index
+    TestService.new.testing
 	  redirect_to feed_path if Session.is_logged_user(@logged_user)
   end
 

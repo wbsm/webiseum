@@ -24,7 +24,7 @@ end
 
 # Prod gems
 gem 'newrelic_rpm'
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 gem 'pg'
 
 # To use ActiveModel has_secure_password
